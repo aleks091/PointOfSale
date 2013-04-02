@@ -49,6 +49,20 @@ class Venta
      */
     private $productos;
 
+
+    /**
+    * @ORM\ManyToOne(targetEntity="VentaEstatus", inversedBy="Venta")
+    * @ORM\JoinColumn(name="ventaEstusId", referencedColumnName="id")
+    */
+    private $ventaEstatus;
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ventaEstusId", type="integer")
+     */
+    private $ventaEstusId;
+
     /**
      * @var float
      *
@@ -210,5 +224,51 @@ class Venta
     public function getSubtotal()
     {
         return $this->subtotal;
+    }
+
+    /**
+     * Set ventaEstusId
+     *
+     * @param integer $ventaEstusId
+     * @return Venta
+     */
+    public function setVentaEstusId($ventaEstusId)
+    {
+        $this->ventaEstusId = $ventaEstusId;
+    
+        return $this;
+    }
+
+    /**
+     * Get ventaEstusId
+     *
+     * @return integer 
+     */
+    public function getVentaEstusId()
+    {
+        return $this->ventaEstusId;
+    }
+
+    /**
+     * Set ventaEstatus
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\VentaEstatus $ventaEstatus
+     * @return Venta
+     */
+    public function setVentaEstatus(\PuntoVenta\PuntoVentaBundle\Entity\VentaEstatus $ventaEstatus = null)
+    {
+        $this->ventaEstatus = $ventaEstatus;
+    
+        return $this;
+    }
+
+    /**
+     * Get ventaEstatus
+     *
+     * @return \PuntoVenta\PuntoVentaBundle\Entity\VentaEstatus 
+     */
+    public function getVentaEstatus()
+    {
+        return $this->ventaEstatus;
     }
 }

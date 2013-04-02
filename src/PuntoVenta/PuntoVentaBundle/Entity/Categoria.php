@@ -40,12 +40,18 @@ class Categoria
     private $fechaCreada;
 
     /**
-     * @ORM\OneToMany(targetEntity="Producto", mappedBy="categoria")
+     * @ORM\OneToMany(targetEntity="Producto", mappedBy="Categoria")
      */
     protected $productos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Especificacion", mappedBy="Categoria")
+     */
+    protected $especificaciones;
+
     public function __construct(){
         $this->productos = new ArrayCollection();
+        $this->especificaciones = new ArrayCollection();
     }
 
     /**
@@ -151,5 +157,38 @@ class Categoria
     public function getProductos()
     {
         return $this->productos;
+    }
+
+    /**
+     * Add especificaciones
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\Especificacion $especificaciones
+     * @return Categoria
+     */
+    public function addEspecificacione(\PuntoVenta\PuntoVentaBundle\Entity\Especificacion $especificaciones)
+    {
+        $this->especificaciones[] = $especificaciones;
+    
+        return $this;
+    }
+
+    /**
+     * Remove especificaciones
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\Especificacion $especificaciones
+     */
+    public function removeEspecificacione(\PuntoVenta\PuntoVentaBundle\Entity\Especificacion $especificaciones)
+    {
+        $this->especificaciones->removeElement($especificaciones);
+    }
+
+    /**
+     * Get especificaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getEspecificaciones()
+    {
+        return $this->especificaciones;
     }
 }

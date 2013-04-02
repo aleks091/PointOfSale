@@ -5,7 +5,7 @@ namespace PuntoVenta\PuntoVentaBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use PuntoVenta\PuntoVentaBundle\Entity\tipoCambio;
+use PuntoVenta\PuntoVentaBundle\Entity\TipoCambio;
 use PuntoVenta\PuntoVentaBundle\Form\tipoCambioType;
 
 /**
@@ -22,7 +22,7 @@ class tipoCambioController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('PuntoVentaBundle:tipoCambio')->findAll();
+        $entities = $em->getRepository('PuntoVentaBundle:TipoCambio')->findAll();
 
         return $this->render('PuntoVentaBundle:tipoCambio:index.html.twig', array(
             'entities' => $entities,
@@ -35,7 +35,7 @@ class tipoCambioController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity  = new tipoCambio();
+        $entity  = new TipoCambio();
         $form = $this->createForm(new tipoCambioType(), $entity);
         $form->bind($request);
 
@@ -59,7 +59,7 @@ class tipoCambioController extends Controller
      */
     public function newAction()
     {
-        $entity = new tipoCambio();
+        $entity = new TipoCambio();
         $form   = $this->createForm(new tipoCambioType(), $entity);
 
         return $this->render('PuntoVentaBundle:tipoCambio:new.html.twig', array(
@@ -76,7 +76,7 @@ class tipoCambioController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PuntoVentaBundle:tipoCambio')->find($id);
+        $entity = $em->getRepository('PuntoVentaBundle:TipoCambio')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find tipoCambio entity.');
@@ -97,7 +97,7 @@ class tipoCambioController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PuntoVentaBundle:tipoCambio')->find($id);
+        $entity = $em->getRepository('PuntoVentaBundle:TipoCambio')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find tipoCambio entity.');
@@ -121,7 +121,7 @@ class tipoCambioController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PuntoVentaBundle:tipoCambio')->find($id);
+        $entity = $em->getRepository('PuntoVentaBundle:TipoCambio')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find tipoCambio entity.');
@@ -156,7 +156,7 @@ class tipoCambioController extends Controller
 
         if ($form->isValid()) {
             $em = $this->getDoctrine()->getManager();
-            $entity = $em->getRepository('PuntoVentaBundle:tipoCambio')->find($id);
+            $entity = $em->getRepository('PuntoVentaBundle:TipoCambio')->find($id);
 
             if (!$entity) {
                 throw $this->createNotFoundException('Unable to find tipoCambio entity.');

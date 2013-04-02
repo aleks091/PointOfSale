@@ -3,6 +3,7 @@
 namespace PuntoVenta\PuntoVentaBundle\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * Producto
@@ -49,6 +50,25 @@ class Producto
     */
     protected $categoria;
 
+     /**
+     * @ORM\OneToMany(targetEntity="CodigoBarra", mappedBy="Producto")
+     */
+    protected $codigosBarras;
+
+    /**
+     * @ORM\OneToMany(targetEntity="FotoProducto", mappedBy="Producto")
+     */
+    protected $fotosProducto;
+
+    /**
+     * @ORM\ManyToMany(targetEntity="DescripcionEspecificacion", mappedBy="Producto")
+     * @ORM\JoinTable(name="ProductoEspecificaciones",
+     *      joinColumns={@ORM\JoinColumn(name="descripcionEspecificacionId", referencedColumnName="id")},
+     *      inverseJoinColumns={@ORM\JoinColumn(name="productoId", referencedColumnName="id")}
+     *      )
+     */
+    protected $descripcionEspecificaciones;
+
 
     /**
      * @var \DateTime
@@ -71,6 +91,13 @@ class Producto
     * @ORM\Column(name="unidadMedida", type="string", nullable=true)
     */
     private $unidadMedida;
+
+
+    public function __construct(){
+        $this->codigosBarras = new ArrayCollection();
+        $this->fotosProducto = new ArrayCollection();
+        $this->descripcionEspecificaciones = new ArrayCollection();
+    }
 
 
     /**
@@ -281,5 +308,104 @@ class Producto
     public function getUnidadMedida()
     {
         return $this->unidadMedida;
+    }
+
+    /**
+     * Add codigosBarras
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\CodigoBarra $codigosBarras
+     * @return Producto
+     */
+    public function addCodigosBarra(\PuntoVenta\PuntoVentaBundle\Entity\CodigoBarra $codigosBarras)
+    {
+        $this->codigosBarras[] = $codigosBarras;
+    
+        return $this;
+    }
+
+    /**
+     * Remove codigosBarras
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\CodigoBarra $codigosBarras
+     */
+    public function removeCodigosBarra(\PuntoVenta\PuntoVentaBundle\Entity\CodigoBarra $codigosBarras)
+    {
+        $this->codigosBarras->removeElement($codigosBarras);
+    }
+
+    /**
+     * Get codigosBarras
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getCodigosBarras()
+    {
+        return $this->codigosBarras;
+    }
+
+    /**
+     * Add fotosProducto
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\FotoProducto $fotosProducto
+     * @return Producto
+     */
+    public function addFotosProducto(\PuntoVenta\PuntoVentaBundle\Entity\FotoProducto $fotosProducto)
+    {
+        $this->fotosProducto[] = $fotosProducto;
+    
+        return $this;
+    }
+
+    /**
+     * Remove fotosProducto
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\FotoProducto $fotosProducto
+     */
+    public function removeFotosProducto(\PuntoVenta\PuntoVentaBundle\Entity\FotoProducto $fotosProducto)
+    {
+        $this->fotosProducto->removeElement($fotosProducto);
+    }
+
+    /**
+     * Get fotosProducto
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getFotosProducto()
+    {
+        return $this->fotosProducto;
+    }
+
+    /**
+     * Add descripcionEspecificaciones
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\DescripcionEspecificacion $descripcionEspecificaciones
+     * @return Producto
+     */
+    public function addDescripcionEspecificacione(\PuntoVenta\PuntoVentaBundle\Entity\DescripcionEspecificacion $descripcionEspecificaciones)
+    {
+        $this->descripcionEspecificaciones[] = $descripcionEspecificaciones;
+    
+        return $this;
+    }
+
+    /**
+     * Remove descripcionEspecificaciones
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\DescripcionEspecificacion $descripcionEspecificaciones
+     */
+    public function removeDescripcionEspecificacione(\PuntoVenta\PuntoVentaBundle\Entity\DescripcionEspecificacion $descripcionEspecificaciones)
+    {
+        $this->descripcionEspecificaciones->removeElement($descripcionEspecificaciones);
+    }
+
+    /**
+     * Get descripcionEspecificaciones
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getDescripcionEspecificaciones()
+    {
+        return $this->descripcionEspecificaciones;
     }
 }

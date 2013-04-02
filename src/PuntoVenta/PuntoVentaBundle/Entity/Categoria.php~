@@ -40,12 +40,18 @@ class Categoria
     private $fechaCreada;
 
     /**
-     * @ORM\OneToMany(targetEntity="Producto", mappedBy="categoria")
+     * @ORM\OneToMany(targetEntity="Producto", mappedBy="Categoria")
      */
     protected $productos;
 
+    /**
+     * @ORM\OneToMany(targetEntity="Especificacion", mappedBy="Categoria")
+     */
+    protected $especificaciones;
+
     public function __construct(){
         $this->productos = new ArrayCollection();
+        $this->especificaciones = new ArrayCollection();
     }
 
     /**
