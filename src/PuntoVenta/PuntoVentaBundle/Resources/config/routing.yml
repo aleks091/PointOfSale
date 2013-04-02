@@ -1,0 +1,23 @@
+_categoria:
+    resource: "@PuntoVentaBundle/Resources/config/routing/categoria.yml"
+    prefix:   /categoria
+
+_producto:
+    resource: "@PuntoVentaBundle/Resources/config/routing/producto.yml"
+    prefix:   /producto
+
+_cliente:
+        resource: "@PuntoVentaBundle/Resources/config/routing/cliente.yml"
+        prefix:   /cliente
+
+_venta:
+        resource: "@PuntoVentaBundle/Resources/config/routing/venta.yml"
+        prefix:   /venta
+
+_iva:
+        resource: "@PuntoVentaBundle/Resources/config/routing/iva.yml"
+        prefix:   /iva
+
+_tipocambio:
+        resource: "@PuntoVentaBundle/Resources/config/routing/tipocambio.yml"
+        prefix:   /tipocambio

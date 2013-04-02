@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8" />
+        <title>{% block title %}Welcome!{% endblock %}</title>
+        {% block stylesheets %}
+            <link href="{{ asset('../app/Resources/style/page.css') }}" type="text/css" rel="stylesheet" />
+
+
+        {% endblock %}
+        <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
+    </head>
+    <body>
+        <div id="header"></div>
+
+        <div id="mainMenuDiv">      
+            <ul id="mainMenu">
+                <li>
+                    <a href="#">Almacenes</a>
+                    <ul>
+                        <li><div class="menuItem"><a href="{{ path('categoria') }}">Categorias</a></div></li>
+                        <li><div class="menuItem"><a href="{inventariosUrl}">Inventarios</a></div></li>                      
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Productos</a>
+                    <ul>                            
+                        <li><div class="menuItemLarge"><a href="{especificacionesUrl}">Especificaciones</a></div></li>
+                        <li><div class="menuItemLarge"><a href="{catalogoUrl}">Catalogo</a></div></li>
+                        <li><div class="menuItemLarge"><a href="{{ path('producto') }}">Productos</a></div></li>                            
+                    </ul>
+                </li>
+                <li>
+                    <a href="#">Ventas</a>
+                    <ul>
+                        <li><div class="menuItem"><a href="{abonosUrl}">Abonos</a></div></li>
+                        <li><div class="menuItem"><a href="{reportesUrl}">Reportes</a></div></li>
+                        <li><div class="menuItem"><a href="{{ path('venta') }}">Venta</a></div></li>
+                    </ul> 
+                </li>
+                <li>
+                    <a href="{clienteUrl}">Clientes</a> 
+                </li>
+                <li>
+                    <a href="{configuracionUrl}">Configuracion</a>
+                </li>
+            </ul>
+        </div>
+
+       
+            <div id="submenuback"> </div>
+            <div id="submenu"> {% block submenu %}{% endblock %}</div>
+
+            <div id="content">
+                {% block body %}{% endblock %}
+                {% block javascripts %}{% endblock %}
+            </div>
+       
+    </body>
+</html>

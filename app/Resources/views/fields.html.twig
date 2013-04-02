@@ -1,0 +1,25 @@
+{% block text_widget %}
+<div class="string_widget">
+    <div class="label-div">{% set type = type|default('text') %}</div>
+
+    <div class="input-div">{{ block('form_widget_simple') }} </div>
+</div>
+{% endblock %}
+
+{% block number_widget %}
+<div class="number_widget">
+    <div class="label-div">{% set type = type|default('text') %}</div>
+
+    <div class="input-div">{{ block('form_widget_simple') }} </div>
+</div>
+{% endblock %}
+
+{% block entity_widget %}
+<div class="entity_widget">
+    <div class="label-div">{% set type = type|default('text') %}</div>
+
+    <div class="input-div">{{ block('choice_widget') }} </div>
+</div>
+{% endblock %}
+
+

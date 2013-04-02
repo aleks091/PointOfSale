@@ -1,0 +1,17 @@
+{% extends 'PuntoVentaBundle:Categoria:main.html.twig' %}
+
+
+{% form_theme form '::fields.html.twig' %}
+
+{% block body -%}
+    <div id="section-title-div"> 
+        <label id="section-title">{{ accionName }} Categoria</label>
+    </div>
+
+    <form action="{{ path('categoria_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <input type="submit" value="Agregar"></input>
+        </p>
+    </form>
+{% endblock %}

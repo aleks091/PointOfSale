@@ -1,0 +1,8 @@
+punto_venta_punto_venta:
+    resource: "@PuntoVentaBundle/Resources/config/routing.yml"
+    prefix:   /
+
+PuntoVentaBundle_categoria:
+    resource: "@PuntoVentaBundle/Resources/config/routing/categoria.yml"
+    prefix:   /categoria
+

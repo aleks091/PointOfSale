@@ -1,0 +1,18 @@
+{% extends 'PuntoVentaBundle:Producto:main.html.twig' %}
+
+{% form_theme form '::fields.html.twig' %}
+
+{% block body -%}
+      <div id="section-title-div"> 
+        <label id="section-title">Nuevo Producto</label>
+    </div>
+
+    <form action="{{ path('producto_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <input type="submit" value="Agregar" />
+        </p>
+    </form>
+
+       
+{% endblock %}

@@ -1,0 +1,44 @@
+{% extends '::base.html.twig' %}
+<html>
+	<div id="mainMenuDiv">		
+		<ul id="mainMenu">
+			<li>
+				<a href="#">Almacenes</a>
+				<ul>
+					<li><div class="menuItem"><a href="{{ path('categoria') }}">Categorias</a></div></li>
+					<li><div class="menuItem"><a href="{inventariosUrl}">Inventarios</a></div></li>	
+					<li><div class="menuItem"><a href="{seccionUrl}">Secciones</a></div></li>	
+					<li><div class="menuItem"><a href="{subcategoriaUrl}">Subcategorias</a></div></li>													
+				</ul>
+			</li>
+			<li>
+				<a href="#">Productos</a>
+				<ul>							
+					<li><div class="menuItemLarge"><a href="{especificacionesUrl}">Especificaciones</a></div></li>
+					<li><div class="menuItemLarge"><a href="{catalogoUrl}">Catalogo</a></div></li>
+					<li><div class="menuItemLarge"><a href="{{ path('producto') }}">Productos</a></div></li>							
+				</ul>
+			</li>
+			<li>
+				<a href="#">Ventas</a>
+				<ul>
+					<li><div class="menuItem"><a href="{abonosUrl}">Abonos</a></div></li>
+					<li><div class="menuItem"><a href="{reportesUrl}">Reportes</a></div></li>
+					<li><div class="menuItem"><a href="{{ path('venta') }}">Venta</a></div></li>
+				</ul> 
+			</li>
+			<li>
+				<a href="{clienteUrl}">Clientes</a> 
+			</li>
+			<li>
+				<a href="{configuracionUrl}">Configuracion</a>
+			</li>
+		</ul>
+	</div>
+
+	<div id="content">
+		{% block body %} {% endblock %}
+	</div>
+
+
+</html>

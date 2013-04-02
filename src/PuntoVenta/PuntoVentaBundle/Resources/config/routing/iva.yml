@@ -1,0 +1,30 @@
+iva:
+    pattern:  /
+    defaults: { _controller: "PuntoVentaBundle:iva:index" }
+
+iva_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PuntoVentaBundle:iva:show" }
+
+iva_new:
+    pattern:  /new
+    defaults: { _controller: "PuntoVentaBundle:iva:new" }
+
+iva_create:
+    pattern:  /create
+    defaults: { _controller: "PuntoVentaBundle:iva:create" }
+    requirements: { _method: post }
+
+iva_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PuntoVentaBundle:iva:edit" }
+
+iva_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PuntoVentaBundle:iva:update" }
+    requirements: { _method: post|put }
+
+iva_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PuntoVentaBundle:iva:delete" }
+    requirements: { _method: post|delete }

@@ -1,0 +1,30 @@
+venta:
+    pattern:  /
+    defaults: { _controller: "PuntoVentaBundle:Venta:index" }
+
+venta_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PuntoVentaBundle:Venta:show" }
+
+venta_new:
+    pattern:  /new
+    defaults: { _controller: "PuntoVentaBundle:Venta:new" }
+
+venta_create:
+    pattern:  /create
+    defaults: { _controller: "PuntoVentaBundle:Venta:create" }
+    requirements: { _method: post }
+
+venta_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PuntoVentaBundle:Venta:edit" }
+
+venta_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PuntoVentaBundle:Venta:update" }
+    requirements: { _method: post|put }
+
+venta_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PuntoVentaBundle:Venta:delete" }
+    requirements: { _method: post|delete }

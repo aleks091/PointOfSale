@@ -1,0 +1,30 @@
+tipocambio:
+    pattern:  /
+    defaults: { _controller: "PuntoVentaBundle:tipoCambio:index" }
+
+tipocambio_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PuntoVentaBundle:tipoCambio:show" }
+
+tipocambio_new:
+    pattern:  /new
+    defaults: { _controller: "PuntoVentaBundle:tipoCambio:new" }
+
+tipocambio_create:
+    pattern:  /create
+    defaults: { _controller: "PuntoVentaBundle:tipoCambio:create" }
+    requirements: { _method: post }
+
+tipocambio_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PuntoVentaBundle:tipoCambio:edit" }
+
+tipocambio_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PuntoVentaBundle:tipoCambio:update" }
+    requirements: { _method: post|put }
+
+tipocambio_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PuntoVentaBundle:tipoCambio:delete" }
+    requirements: { _method: post|delete }

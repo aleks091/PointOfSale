@@ -1,0 +1,36 @@
+{% extends 'PuntoVentaBundle:Categoria:main.html.twig' %}
+
+{% block body -%}
+    <div id="section-title-div"> 
+        <label id="section-title">Categorias</label>
+    </div>
+
+    <table class="multipleRowsTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Nombre</th>
+                <th>Fecha Creada</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.nombre }}</td>
+                <td>{% if entity.fechaCreada %}{{ entity.fechaCreada|date('Y-m-d') }}{% endif %}</td>
+                <td>
+                    
+                    
+                    <a href="{{ path('categoria_edit', { 'id': entity.id }) }}">Editar</a>
+                    |
+                    <a href="{{ path('categoria_delete', { 'id': entity.id }) }}">Eliminar</a>
+                    
+                    
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}

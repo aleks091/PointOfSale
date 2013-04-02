@@ -1,0 +1,40 @@
+{% extends 'PuntoVentaBundle:Producto:main.html.twig' %}
+
+{% block body -%}
+    <div id="section-title-div"> 
+        <label id="section-title">Productos</label>
+    </div>
+
+    <table class="multipleRowsTable">
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Categoria</th>
+                <th>Descripci&oacute;n</th>
+                <th>Precio Unit</th>
+                <th>Disponibles</th>
+                <th>Fecha Agregado</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.id }}</td>
+                <td>{{ entity.categoria.nombre }}</td>
+                <td>{{ entity.descripcion }}</td>               
+                <td>$ {{entity.precioUnitario|number_format(2, '.', ',') }}</td>
+                <td>{{ entity.disponibles }}</td>
+                <td>
+                    {% if entity.fechaAgregado %}{{ entity.fechaAgregado|date('Y-m-d') }}
+                    {% endif %}
+                </td>
+                <td>                
+                    <a href="{{ path('producto_delete', { 'id': entity.id }) }}">Eliminar</a> |
+                    <a href="{{ path('producto_edit', { 'id': entity.id }) }}">Editar</a>                   
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}
