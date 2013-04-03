@@ -22,7 +22,8 @@
                 <td>{% if entity.fechaCreada %}{{ entity.fechaCreada|date('Y-m-d') }}{% endif %}</td>
                 <td>
                     
-                    
+                    <a href="{{ path('especificacion_new', { 'id': entity.id }) }}">Especificaciones</a>
+                    |
                     <a href="{{ path('categoria_edit', { 'id': entity.id }) }}">Editar</a>
                     |
                     <a href="{{ path('categoria_delete', { 'id': entity.id }) }}">Eliminar</a>

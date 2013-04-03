@@ -5,7 +5,7 @@ namespace PuntoVenta\PuntoVentaBundle\Controller;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
-use PuntoVenta\PuntoVentaBundle\Entity\iva;
+use PuntoVenta\PuntoVentaBundle\Entity\IVA;
 use PuntoVenta\PuntoVentaBundle\Form\ivaType;
 
 /**
@@ -22,7 +22,8 @@ class ivaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('PuntoVentaBundle:iva')->findAll();
+        $entities = $em->getRepository('PuntoVentaBundle:IVA')
+                    ->findAllOrderByFechaAgregado();
 
         return $this->render('PuntoVentaBundle:iva:index.html.twig', array(
             'entities' => $entities,
@@ -35,7 +36,7 @@ class ivaController extends Controller
      */
     public function createAction(Request $request)
     {
-        $entity  = new iva();
+        $entity  = new IVA();
         $form = $this->createForm(new ivaType(), $entity);
         $form->bind($request);
 
@@ -58,11 +59,17 @@ class ivaController extends Controller
      *
      */
     public function newAction()
-    {
-        $entity = new iva();
+    {        
+        $entity = new IVA();
         $form   = $this->createForm(new ivaType(), $entity);
 
+        $em = $this->getDoctrine()->getManager();
+
+        $latestIva = $em->getRepository('PuntoVentaBundle:IVA')
+                    ->findLatest();
+
         return $this->render('PuntoVentaBundle:iva:new.html.twig', array(
+            'latest' => $latestIva,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -76,7 +83,7 @@ class ivaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PuntoVentaBundle:iva')->find($id);
+        $entity = $em->getRepository('PuntoVentaBundle:IVA')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find iva entity.');
@@ -97,7 +104,7 @@ class ivaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entity = $em->getRepository('PuntoVentaBundle:iva')->find($id);
+        $entity = $em->getRepository('PuntoVentaBundle:IVA')->find($id);
 
         if (!$entity) {
             throw $this->createNotFoundException('Unable to find iva entity.');

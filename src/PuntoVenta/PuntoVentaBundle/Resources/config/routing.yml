@@ -21,3 +21,7 @@ _iva:
 _tipocambio:
         resource: "@PuntoVentaBundle/Resources/config/routing/tipocambio.yml"
         prefix:   /tipocambio
+
+_especificacion:
+        resource: "@PuntoVentaBundle/Resources/config/routing/especificacion.yml"
+        prefix:   /especificacion

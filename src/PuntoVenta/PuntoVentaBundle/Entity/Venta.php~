@@ -38,8 +38,14 @@ class Venta
     /**
      * @var integer
      *
-     * @ORM\Column(name="cliente", type="integer")
+     * @ORM\Column(name="clienteId", type="integer")
      */
+    private $clienteId;
+
+    /**
+    * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="Venta")
+    * @ORM\JoinColumn(name="clienteId", referencedColumnName="id")
+    */
     private $cliente;
 
     /**
@@ -270,5 +276,28 @@ class Venta
     public function getVentaEstatus()
     {
         return $this->ventaEstatus;
+    }
+
+    /**
+     * Set clienteId
+     *
+     * @param integer $clienteId
+     * @return Venta
+     */
+    public function setClienteId($clienteId)
+    {
+        $this->clienteId = $clienteId;
+    
+        return $this;
+    }
+
+    /**
+     * Get clienteId
+     *
+     * @return integer 
+     */
+    public function getClienteId()
+    {
+        return $this->clienteId;
     }
 }

@@ -29,4 +29,6 @@ categoria_update:
 categoria_delete:
     pattern:  /{id}/delete
     defaults: { _controller: "PuntoVentaBundle:Categoria:delete" }
+
+
      

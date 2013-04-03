@@ -11,7 +11,6 @@ class tipoCambioType extends AbstractType
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
         $builder
-            ->add('fechaAgregado')
             ->add('tipoCambio')
         ;
     }

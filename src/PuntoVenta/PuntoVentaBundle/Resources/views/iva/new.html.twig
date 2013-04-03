@@ -1,20 +1,20 @@
-{% extends '::base.html.twig' %}
+{% extends 'PuntoVentaBundle:tipoCambio:main.html.twig' %}
+
+{% form_theme form '::fields.html.twig' %}
 
 {% block body -%}
-    <h1>iva creation</h1>
+   <div id="section-title-div"> 
+        <label id="section-title">I.V.A.</label>
+    </div>
+    <span>Actual: {{ latest.iva|number_format(2, '.', ',') }} %</span>
+    <a href="{{ path('iva') }}">
+            ( Historial )
+        </a>
 
     <form action="{{ path('iva_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>
-            <button type="submit">Create</button>
+            <input type="submit" value="Actualizar" />
         </p>
     </form>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('iva') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

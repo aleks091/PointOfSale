@@ -1,20 +1,19 @@
-{% extends '::base.html.twig' %}
+{% extends 'PuntoVentaBundle:Cliente:main.html.twig' %}
+
+
+{% form_theme form '::fields.html.twig' %}
+
 
 {% block body -%}
-    <h1>Cliente creation</h1>
+   <div id="section-title-div"> 
+        <label id="section-title">Alta Cliente</label>
+    </div>
+
 
     <form action="{{ path('cliente_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>
-            <button type="submit">Create</button>
+            <input type="submit" value="Agregar" />
         </p>
     </form>
-
-        <ul class="record_actions">
-    <li>
-        <a href="{{ path('cliente') }}">
-            Back to the list
-        </a>
-    </li>
-</ul>
 {% endblock %}

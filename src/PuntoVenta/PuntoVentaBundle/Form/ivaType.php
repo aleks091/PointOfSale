@@ -12,14 +12,13 @@ class ivaType extends AbstractType
     {
         $builder
             ->add('iva')
-            ->add('fechaAgregado')
         ;
     }
 
     public function setDefaultOptions(OptionsResolverInterface $resolver)
     {
         $resolver->setDefaults(array(
-            'data_class' => 'PuntoVenta\PuntoVentaBundle\Entity\iva'
+            'data_class' => 'PuntoVenta\PuntoVentaBundle\Entity\IVA'
         ));
     }
 

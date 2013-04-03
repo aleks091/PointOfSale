@@ -1,43 +1,31 @@
-{% extends '::base.html.twig' %}
+{% extends 'PuntoVentaBundle:tipoCambio:main.html.twig' %}
+
 
 {% block body -%}
-    <h1>tipoCambio list</h1>
+    <div id="section-title-div"> 
+        <label id="section-title">Tipo de Cambio</label>
+    </div>
 
-    <table class="records_list">
+    <table class="multipleRowsTable">
         <thead>
             <tr>
-                <th>Id</th>
-                <th>Fechaagregado</th>
-                <th>Tipocambio</th>
-                <th>Actions</th>
+                <th>Tipo Cambio</th>
+                <th>Fecha Agregado</th>                
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
         {% for entity in entities %}
             <tr>
-                <td><a href="{{ path('tipocambio_show', { 'id': entity.id }) }}">{{ entity.id }}</a></td>
+                <td>$ {{ entity.tipoCambio | number_format(2, '.', ',') }} x 1</td>
                 <td>{% if entity.fechaAgregado %}{{ entity.fechaAgregado|date('Y-m-d H:i:s') }}{% endif %}</td>
-                <td>{{ entity.tipoCambio }}</td>
+                
                 <td>
-                <ul>
-                    <li>
-                        <a href="{{ path('tipocambio_show', { 'id': entity.id }) }}">show</a>
-                    </li>
-                    <li>
-                        <a href="{{ path('tipocambio_edit', { 'id': entity.id }) }}">edit</a>
-                    </li>
-                </ul>
+               
+                    <a href="#">Eliminar</a>
                 </td>
             </tr>
         {% endfor %}
         </tbody>
     </table>
-
-        <ul>
-        <li>
-            <a href="{{ path('tipocambio_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}
