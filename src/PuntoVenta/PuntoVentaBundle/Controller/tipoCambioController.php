@@ -22,7 +22,7 @@ class tipoCambioController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('PuntoVentaBundle:TipoCambio')->findAll();
+        $entities = $em->getRepository('PuntoVentaBundle:TipoCambio')->findAllOrderByFechaAgregado();
 
         return $this->render('PuntoVentaBundle:tipoCambio:index.html.twig', array(
             'entities' => $entities,
@@ -44,7 +44,7 @@ class tipoCambioController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('tipocambio_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('tipocambio'));
         }
 
         return $this->render('PuntoVentaBundle:tipoCambio:new.html.twig', array(
@@ -61,8 +61,12 @@ class tipoCambioController extends Controller
     {
         $entity = new TipoCambio();
         $form   = $this->createForm(new tipoCambioType(), $entity);
+        $em = $this->getDoctrine()->getManager();
+        $latestTipoCambio = $em->getRepository('PuntoVentaBundle:TipoCambio')->findLatest();
+
 
         return $this->render('PuntoVentaBundle:tipoCambio:new.html.twig', array(
+            'latest' => $latestTipoCambio,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));

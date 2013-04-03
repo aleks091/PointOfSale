@@ -5,8 +5,10 @@
         <title>{% block title %}Welcome!{% endblock %}</title>
         {% block stylesheets %}
             <link href="{{ asset('../app/Resources/style/page.css') }}" type="text/css" rel="stylesheet" />
+        {% endblock %}
 
-
+        {% block javascripts %} 
+            <script type="text/javascript" src="{{ asset('../web/bundles/puntoventa/js/jquery-min.js') }}"></script>            
         {% endblock %}
         <link rel="icon" type="image/x-icon" href="{{ asset('favicon.ico') }}" />
     </head>
@@ -25,7 +27,7 @@
                 <li>
                     <a href="#">Productos</a>
                     <ul>                            
-                        <li><div class="menuItemLarge"><a href="{especificacionesUrl}">Especificaciones</a></div></li>
+                        <li><div class="menuItemLarge"><a href="{{ path('especificacion') }}">Especificaciones</a></div></li>
                         <li><div class="menuItemLarge"><a href="{catalogoUrl}">Catalogo</a></div></li>
                         <li><div class="menuItemLarge"><a href="{{ path('producto') }}">Productos</a></div></li>                            
                     </ul>
@@ -53,7 +55,7 @@
 
             <div id="content">
                 {% block body %}{% endblock %}
-                {% block javascripts %}{% endblock %}
+                
             </div>
        
     </body>

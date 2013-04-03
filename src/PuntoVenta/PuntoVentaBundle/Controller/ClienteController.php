@@ -44,7 +44,7 @@ class ClienteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('cliente_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('cliente'));
         }
 
         return $this->render('PuntoVentaBundle:Cliente:new.html.twig', array(
@@ -135,7 +135,7 @@ class ClienteController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('cliente_edit', array('id' => $id)));
+            return $this->redirect($this->generateUrl('cliente'));
         }
 
         return $this->render('PuntoVentaBundle:Cliente:edit.html.twig', array(

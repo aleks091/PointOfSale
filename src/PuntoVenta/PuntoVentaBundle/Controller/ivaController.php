@@ -45,7 +45,7 @@ class ivaController extends Controller
             $em->persist($entity);
             $em->flush();
 
-            return $this->redirect($this->generateUrl('iva_show', array('id' => $entity->getId())));
+            return $this->redirect($this->generateUrl('iva', array('id' => $entity->getId())));
         }
 
         return $this->render('PuntoVentaBundle:iva:new.html.twig', array(

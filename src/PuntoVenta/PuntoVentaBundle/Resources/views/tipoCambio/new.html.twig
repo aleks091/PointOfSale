@@ -6,7 +6,7 @@
     <div id="section-title-div"> 
         <label id="section-title">Tipo de Cambio</label>
     </div>
-    <span>Actual: $ 00.00 x 1 </span> <a href="{{ path('tipocambio') }}">( Historial )</a>
+    <span>Actual: $ {{ latest.tipoCambio | number_format(2, '.', ',') }} x 1 </span> <a href="{{ path('tipocambio') }}">( Historial )</a>
     <form action="{{ path('tipocambio_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>

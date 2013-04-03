@@ -18,7 +18,7 @@
         {% for entity in entities %}
             <tr>
                 <td>$ {{ entity.tipoCambio | number_format(2, '.', ',') }} x 1</td>
-                <td>{% if entity.fechaAgregado %}{{ entity.fechaAgregado|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaAgregado %}{{ entity.fechaAgregado|date('d-m-Y H:i:s') }}{% endif %}</td>
                 
                 <td>
                

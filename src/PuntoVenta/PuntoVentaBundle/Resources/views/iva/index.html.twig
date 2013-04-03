@@ -17,7 +17,7 @@
         {% for entity in entities %}
             <tr>
                 <td>{{ entity.iva|number_format(2, '.', ',') }} % </td>
-                <td>{% if entity.fechaAgregado %}{{ entity.fechaAgregado|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.fechaAgregado %}{{ entity.fechaAgregado|date('d-m-Y H:i:s') }}{% endif %}</td>
                 <td>                
                     <a href="#">Eliminar</a>            
                 </td>
