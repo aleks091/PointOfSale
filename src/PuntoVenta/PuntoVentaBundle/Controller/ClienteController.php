@@ -169,6 +169,11 @@ class ClienteController extends Controller
         return $this->redirect($this->generateUrl('cliente'));
     }
 
+    public function searchAction(Request $request){
+        echo 'search';
+        return $this->redirect($this->generateUrl('cliente'));
+    }
+
     /**
      * Creates a form to delete a Cliente entity by id.
      *
@@ -183,4 +188,6 @@ class ClienteController extends Controller
             ->getForm()
         ;
     }
+
+
 }

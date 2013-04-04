@@ -319,4 +319,37 @@ class Venta
             $this->fechaRealizada = new \DateTime();
         }
     }
+
+    /**
+     * Add ventasUnitarias
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\VentaUnitaria $ventasUnitarias
+     * @return Venta
+     */
+    public function addVentasUnitaria(\PuntoVenta\PuntoVentaBundle\Entity\VentaUnitaria $ventasUnitarias)
+    {
+        $this->ventasUnitarias[] = $ventasUnitarias;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ventasUnitarias
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\VentaUnitaria $ventasUnitarias
+     */
+    public function removeVentasUnitaria(\PuntoVenta\PuntoVentaBundle\Entity\VentaUnitaria $ventasUnitarias)
+    {
+        $this->ventasUnitarias->removeElement($ventasUnitarias);
+    }
+
+    /**
+     * Get ventasUnitarias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVentasUnitarias()
+    {
+        return $this->ventasUnitarias;
+    }
 }

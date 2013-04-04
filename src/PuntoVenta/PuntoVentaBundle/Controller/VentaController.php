@@ -8,6 +8,15 @@ use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 use PuntoVenta\PuntoVentaBundle\Entity\Venta;
 use PuntoVenta\PuntoVentaBundle\Form\VentaType;
 
+use PuntoVenta\PuntoVentaBundle\Entity\VentaUnitaria;
+use PuntoVenta\PuntoVentaBundle\Form\VentaUnitariaType;
+
+use PuntoVenta\PuntoVentaBundle\Entity\Cliente;
+use PuntoVenta\PuntoVentaBundle\Form\ClienteType;
+
+use  PuntoVenta\PuntoVentaBundle\Resources\viewModels\CategoriaViewModel;
+
+
 /**
  * Venta controller.
  *
@@ -59,10 +68,32 @@ class VentaController extends Controller
      */
     public function newAction()
     {
+        $em = $this->getDoctrine()->getManager();
+
         $entity = new Venta();
         $form   = $this->createForm(new VentaType(), $entity);
 
+        $cliente = $em->getRepository('PuntoVentaBundle:Cliente')->findOneById(4);
+        $clienteForm   = $this->createForm(new ClienteType(), $cliente);
+
+        $ventaUnitaria = new VentaUnitaria();
+        $ventaUnitariaForm   = $this->createForm(new VentaUnitariaType(), $ventaUnitaria);
+
+        $categorias = $em->getRepository('PuntoVentaBundle:Categoria')->findAll();
+        $categoriasVm = new CategoriaViewModel();
+        $categoriasSelect = $categoriasVm->getCategoriaSelector($this
+            ->createFormBuilder())->getForm()->createView();
+
+
+
+        $producto =  $em->getRepository('PuntoVentaBundle:Producto')->findOneById(1);
+
         return $this->render('PuntoVentaBundle:Venta:new.html.twig', array(
+            'categorias' => $categoriasSelect,
+            'producto' => $producto,
+            'cliente'=> $clienteForm->createView(),
+            'clienteId' => $cliente->getId(),
+            'ventaUnitaria' => $ventaUnitariaForm->createView(),
             'entity' => $entity,
             'form'   => $form->createView(),
         ));
@@ -86,7 +117,7 @@ class VentaController extends Controller
 
         return $this->render('PuntoVentaBundle:Venta:show.html.twig', array(
             'entity'      => $entity,
-            'delete_form' => $deleteForm->createView(),        ));
+            'delete_form' => $deleteForm->createView(), ));
     }
 
     /**

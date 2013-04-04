@@ -13,8 +13,6 @@ class VentaType extends AbstractType
         $builder
             ->add('fechaRealizada')
             ->add('fechaPagada')
-            ->add('cliente')
-            ->add('productos')
             ->add('total')
             ->add('subtotal')
         ;

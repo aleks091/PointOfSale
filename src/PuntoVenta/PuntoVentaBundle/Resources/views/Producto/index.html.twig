@@ -13,7 +13,7 @@
                 <th>Descripci&oacute;n</th>
                 <th>Precio Unit</th>
                 <th>Disponibles</th>
-                <th>Fecha Agregado</th>
+                <th>Medida</th>
                 <th>Acciones</th>
             </tr>
         </thead>
@@ -26,8 +26,7 @@
                 <td>$ {{entity.precioUnitario|number_format(2, '.', ',') }}</td>
                 <td>{{ entity.disponibles }}</td>
                 <td>
-                    {% if entity.fechaAgregado %}{{ entity.fechaAgregado|date('Y-m-d') }}
-                    {% endif %}
+                    {{ entity.unidadMedida }}
                 </td>
                 <td>                
                     <a href="{{ path('producto_delete', { 'id': entity.id }) }}">Eliminar</a> |

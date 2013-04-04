@@ -19,6 +19,11 @@ cliente_edit:
     pattern:  /{id}/edit
     defaults: { _controller: "PuntoVentaBundle:Cliente:edit" }
 
+cliente_buscar:
+    pattern: /search
+    defaults: { _controller: "PuntoVentaBundle:Cliente:search" }
+    requirements: { _method: post|put }
+
 cliente_update:
     pattern:  /{id}/update
     defaults: { _controller: "PuntoVentaBundle:Cliente:update" }

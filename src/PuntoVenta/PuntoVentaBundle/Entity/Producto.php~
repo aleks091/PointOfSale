@@ -69,6 +69,11 @@ class Producto
      */
     protected $descripcionEspecificaciones;
 
+    /**
+     * @ORM\OneToMany(targetEntity="VentaUnitaria", mappedBy="Producto")
+     */
+    protected $ventasUnitarias;
+
 
     /**
      * @var \DateTime
@@ -97,6 +102,7 @@ class Producto
         $this->codigosBarras = new ArrayCollection();
         $this->fotosProducto = new ArrayCollection();
         $this->descripcionEspecificaciones = new ArrayCollection();
+        $this->ventasUnitarias = new ArrayCollection();
     }
 
 

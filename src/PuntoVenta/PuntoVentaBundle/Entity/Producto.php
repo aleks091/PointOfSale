@@ -69,6 +69,11 @@ class Producto
      */
     protected $descripcionEspecificaciones;
 
+    /**
+     * @ORM\OneToMany(targetEntity="VentaUnitaria", mappedBy="Producto")
+     */
+    protected $ventasUnitarias;
+
 
     /**
      * @var \DateTime
@@ -97,6 +102,7 @@ class Producto
         $this->codigosBarras = new ArrayCollection();
         $this->fotosProducto = new ArrayCollection();
         $this->descripcionEspecificaciones = new ArrayCollection();
+        $this->ventasUnitarias = new ArrayCollection();
     }
 
 
@@ -407,5 +413,38 @@ class Producto
     public function getDescripcionEspecificaciones()
     {
         return $this->descripcionEspecificaciones;
+    }
+
+    /**
+     * Add ventasUnitarias
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\VentaUnitaria $ventasUnitarias
+     * @return Producto
+     */
+    public function addVentasUnitaria(\PuntoVenta\PuntoVentaBundle\Entity\VentaUnitaria $ventasUnitarias)
+    {
+        $this->ventasUnitarias[] = $ventasUnitarias;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ventasUnitarias
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\VentaUnitaria $ventasUnitarias
+     */
+    public function removeVentasUnitaria(\PuntoVenta\PuntoVentaBundle\Entity\VentaUnitaria $ventasUnitarias)
+    {
+        $this->ventasUnitarias->removeElement($ventasUnitarias);
+    }
+
+    /**
+     * Get ventasUnitarias
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVentasUnitarias()
+    {
+        return $this->ventasUnitarias;
     }
 }

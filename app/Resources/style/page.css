@@ -247,11 +247,11 @@ input[type=submit]{
     border-style: solid;
     border-width: thin;
 }
-input[type=password], input[type=text]{
+input[type=password], input[type=text], input[type=number]{
 	border: 1px solid #BABABA;
 	height: 27px;
 }
-input[type=password]:focus, input[type=text]:focus{
+input[type=password]:focus, input[type=text]:focus, , input[type=number]:focus{
 	border: 1px solid #019AD2;
 }
 
@@ -296,8 +296,33 @@ input[type=submit]:disabled{
 .input-div{
 	margin-bottom: 10px;
 }
+.bottomBorderDiv{
+	margin: 10px 0px;
+	border-bottom: 1px solid #CCC;
+}
+.subTitle{
+	font-size: 20px;
+}
 
+.subTable{
+	border-collapse: collapse;
+}
 
+.subTable th{
+	background: linear-gradient(to top, #CED1D5, #EEF0F4) repeat scroll 0 0 #F1F1F1;
+	
+	font-weight: normal;
+
+	font-size: 14px;
+    line-height: 1.3em;
+    padding: 5px 8px;
+    text-align: left;
+    border-bottom: 1px solid #BBB;
+}
+
+.subTable td{
+	padding:  5px;
+}
 
 
 

@@ -25,3 +25,7 @@ _tipocambio:
 _especificacion:
         resource: "@PuntoVentaBundle/Resources/config/routing/especificacion.yml"
         prefix:   /especificacion
+
+_descripcion:
+        resource: "@PuntoVentaBundle/Resources/config/routing/descripcionespecificacion.yml"
+        prefix:   /descripcion
