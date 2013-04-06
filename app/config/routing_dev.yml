@@ -1,6 +1,6 @@
 _welcome:
     pattern:  /
-    defaults: { _controller: PuntoVentaBundle:Categoria:index }
+    defaults: { _controller: PuntoVentaBundle:Venta:new }
 
 
 

@@ -1,9 +1,11 @@
 {% extends '::base.html.twig' %}
 
 {% block body -%}
-    <h1>Venta list</h1>
+    <div id="section-title-div"> 
+        <label id="section-title">Ventas</label>
+    </div>  
 
-    <table class="records_list">
+    <table class="multipleRowsTable">
         <thead>
             <tr>
                 <th>Id</th>
@@ -13,7 +15,7 @@
                 <th>Productos</th>
                 <th>Total</th>
                 <th>Subtotal</th>
-                <th>Actions</th>
+                <th>Acciones</th>
             </tr>
         </thead>
         <tbody>
@@ -41,11 +43,4 @@
         </tbody>
     </table>
 
-        <ul>
-        <li>
-            <a href="{{ path('venta_new') }}">
-                Create a new entry
-            </a>
-        </li>
-    </ul>
     {% endblock %}

@@ -1,6 +1,7 @@
 {% extends '::base.html.twig' %}
 
-{% form_theme form '::fields.html.twig' %}
+{% form_theme venta '::fields.html.twig' %}
+
 
 {% block javascripts %}
     {{ parent() }}
@@ -8,6 +9,8 @@
 <script type="text/javascript">
     var clienteId = {{ clienteId }};
 </script>
+
+
 {% endblock %}
 
 
@@ -16,35 +19,22 @@
         <label id="section-title">Venta</label>
     </div>     
 
-    <form action="{{ path('venta_create') }}" method="post" {{ form_enctype(form) }}>
+    <form action="{{ path('venta_create') }}" method="post" {{ form_enctype(venta) }}>
 
         <span class="subTitle">Cliente</span>
         {% include 'PuntoVentaBundle:Cliente:searchCliente.html.twig'
              with {'cliente': cliente} %}
             
         <div class="bottomBorderDiv"></div>
-            
-        <table class="subTable">
-            <tr>
-                <th>Clave Prod.</th>
-                <th>Categoria</th>
-                <th>Producto</th>
-                <th>P. Unit.</th>
-                <th>Cantidad</th>
-                <th>Importe</th>
-            </tr>
+           
+      
+        {% include 'PuntoVentaBundle:Venta:ventaUnitariaTable.html.twig'
+            with {'ventasUnitarias': venta.ventasUnitarias} %}    
 
-            {% include 'PuntoVentaBundle:Venta:ventaUnitaria.html.twig'
-             with {'ventaUnitaria': ventaUnitaria, 'categorias': categorias, 'producto': producto } %}
-
-        </table>
-
-        <input type="submit" value="Nuevo" />
 
         <div class="bottomBorderDiv"></div>
 
          {% include 'PuntoVentaBundle:Venta:ventaTotal.html.twig' %} 
-
         <input type="submit" value="Registrar" />
      
     </form>

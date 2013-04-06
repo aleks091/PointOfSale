@@ -12,4 +12,15 @@ use Doctrine\ORM\EntityRepository;
  */
 class ProductoRepository extends EntityRepository
 {
+	public function getProductosOfFirstCategory(){
+		$repository = $this->getEntityManager();
+
+		return $repository->createQueryBuilder()
+							->select(array('p'))
+							->from('PuntoVentaBundle:Producto', 'p')
+							->innerJoin('p.categoria', 'c')
+							->where('c.id = 1');
+							
+	
+	}
 }
