@@ -45,23 +45,23 @@ class Producto
     private $categoriaId;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="Producto")
+    * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="producto")
     * @ORM\JoinColumn(name="categoriaId", referencedColumnName="id")
     */
     protected $categoria;
 
      /**
-     * @ORM\OneToMany(targetEntity="CodigoBarra", mappedBy="Producto")
+     * @ORM\OneToMany(targetEntity="CodigoBarra", mappedBy="producto")
      */
     protected $codigosBarras;
 
     /**
-     * @ORM\OneToMany(targetEntity="FotoProducto", mappedBy="Producto")
+     * @ORM\OneToMany(targetEntity="FotoProducto", mappedBy="producto")
      */
     protected $fotosProducto;
 
     /**
-     * @ORM\ManyToMany(targetEntity="DescripcionEspecificacion", mappedBy="Producto")
+     * @ORM\ManyToMany(targetEntity="DescripcionEspecificacion")
      * @ORM\JoinTable(name="ProductoEspecificaciones",
      *      joinColumns={@ORM\JoinColumn(name="descripcionEspecificacionId", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="productoId", referencedColumnName="id")}
@@ -70,7 +70,7 @@ class Producto
     protected $descripcionEspecificaciones;
 
     /**
-     * @ORM\OneToMany(targetEntity="VentaUnitaria", mappedBy="Producto")
+     * @ORM\OneToMany(targetEntity="VentaUnitaria", mappedBy="producto")
      */
     protected $ventasUnitarias;
 

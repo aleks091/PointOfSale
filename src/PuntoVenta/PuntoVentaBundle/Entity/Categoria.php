@@ -40,7 +40,7 @@ class Categoria
     private $fechaCreada;
 
     /**
-     * @ORM\OneToMany(targetEntity="Producto", mappedBy="Categoria")
+     * @ORM\OneToMany(targetEntity="Producto", mappedBy="categoria")
      */
     protected $productos;
 

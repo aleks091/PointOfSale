@@ -13,14 +13,31 @@ use Doctrine\ORM\EntityRepository;
 class ProductoRepository extends EntityRepository
 {
 	public function getProductosOfFirstCategory(){
+			
 		$repository = $this->getEntityManager();
+		
+		$firstCategoria = $repository->createQueryBuilder()
+							->select('c.id')
+							->from('PuntoVentaBundle:Categoria', 'c')
+							->orderBy('c.nombre', 'ASC')
+							->setMaxResults(1)
+							->getQuery()
+							->getScalarResult();
 
+		
 		return $repository->createQueryBuilder()
 							->select(array('p'))
 							->from('PuntoVentaBundle:Producto', 'p')
 							->innerJoin('p.categoria', 'c')
-							->where('c.id = 1');
-							
+							->orderBy('p.descripcion', 'ASC')
+							->where('c.id = :categoryId')
+							->setParameter('categoryId', $firstCategoria);					
 	
+	}
+	
+	public function getFirstProductoOfFirstCategory(){
+		return $this->getProductosOfFirstCategory()
+				->getQuery()
+				->getSingleResult();
 	}
 }

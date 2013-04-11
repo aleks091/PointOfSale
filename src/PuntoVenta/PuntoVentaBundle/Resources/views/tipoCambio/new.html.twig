@@ -6,7 +6,16 @@
     <div id="section-title-div"> 
         <label id="section-title">Tipo de Cambio</label>
     </div>
-    <span>Actual: $ {{ latest.tipoCambio | number_format(2, '.', ',') }} x 1 </span> <a href="{{ path('tipocambio') }}">( Historial )</a>
+    <span>Actual: $  
+	{% if latest %}
+	   {{ latest.tipoCambio | number_format(2, '.', ',') }}
+	{% else %}
+	  0.00
+	{% endif %} 
+    x 1
+    </span> 
+    
+    <a href="{{ path('tipocambio') }}">( Historial )</a>
     <form action="{{ path('tipocambio_create') }}" method="post" {{ form_enctype(form) }}>
         {{ form_widget(form) }}
         <p>

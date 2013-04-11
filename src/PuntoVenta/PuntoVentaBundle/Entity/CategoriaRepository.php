@@ -12,4 +12,12 @@ use Doctrine\ORM\EntityRepository;
  */
 class CategoriaRepository extends EntityRepository
 {
+	public function getCategoriasByNombre(){		
+			$repository = $this->getEntityManager();
+		
+			return $repository->createQueryBuilder()
+			->select('c')
+			->from('PuntoVentaBundle:Categoria', 'c')
+			->orderBy('c.nombre', 'ASC');
+	}
 }

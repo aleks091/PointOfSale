@@ -2,6 +2,8 @@
 
 namespace PuntoVenta\PuntoVentaBundle\Controller;
 
+use Doctrine\Common\Collections\ArrayCollection;
+
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Bundle\FrameworkBundle\Controller\Controller;
 
@@ -15,6 +17,7 @@ use PuntoVenta\PuntoVentaBundle\Entity\Cliente;
 use PuntoVenta\PuntoVentaBundle\Form\ClienteType;
 
 use  PuntoVenta\PuntoVentaBundle\Resources\viewModels\CategoriaViewModel;
+use  Doctrine\Common\Util\Debug;
 
 
 /**
@@ -68,19 +71,16 @@ class VentaController extends Controller
      */
     public function newAction()
     {
-        $em = $this->getDoctrine()->getManager();
-
         $entity = new Venta();
-        $ventaUnitaria = new VentaUnitaria();    
-
-        $producto = $em->getRepository('PuntoVentaBundle:Producto')->findOneById(1);
-        $ventaUnitaria->setCantidadProducto(50);
-
+        $ventaUnitaria = new VentaUnitaria();   
+               
+        $em = $this->getDoctrine()->getManager();          
+        
         $entity->getVentasUnitarias()->add($ventaUnitaria);
-        $form   = $this->createForm(new VentaType(), $entity);
+        $form = $this->createForm(new VentaType(), $entity);
 
 
-        $cliente = $em->getRepository('PuntoVentaBundle:Cliente')->findOneById(4);
+        $cliente = $em->getRepository('PuntoVentaBundle:Cliente')->findOneById(1);
         $clienteForm   = $this->createForm(new ClienteType(), $cliente);
 
         return $this->render('PuntoVentaBundle:Venta:new.html.twig', array(
