@@ -1,0 +1,17 @@
+{% extends 'PuntoVentaBundle:Especificacion:main.html.twig' %}
+
+{% form_theme form '::fields.html.twig' %}
+
+{% block body -%}
+    <div id="section-title-div"> 
+        <label id="section-title">Especificacion 
+        </label>
+    </div>
+
+    <form action="{{ path('especificacion_create') }}" method="post" {{ form_enctype(form) }}>
+        {{ form_widget(form) }}
+        <p>
+            <input type="submit" value="Agregar" />
+        </p>
+    </form>
+{% endblock %}

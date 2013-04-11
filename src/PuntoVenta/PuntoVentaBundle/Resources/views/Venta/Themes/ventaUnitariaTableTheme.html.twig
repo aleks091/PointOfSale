@@ -1,0 +1,44 @@
+
+{% block text_widget %}
+  {{ block('form_widget_simple') }} 
+{% endblock %}
+
+{% block number_widget %}
+    {{ block('form_widget_simple') }} 
+{% endblock %}
+
+{% block entity_widget %}
+  {{ block('choice_widget') }}
+{% endblock %}
+
+{% block form_widget_compound %}
+    {% spaceless %}
+    {% if form is defined %}
+        
+            {% if form.parent is empty %}
+                {{ form_errors(form) }}
+            {% endif %}
+            {{ block('form_rows') }}
+            {{ form_rest(form) }}
+        
+         {% endif %}
+    {% endspaceless %}
+{% endblock form_widget_compound %}
+
+
+
+{% block form_rows %}
+    {% spaceless %}
+        {% if form is defined %}                    
+            <td>{{ form_widget(form.productoId) }}</td>
+            <td>{{ form_widget(form.categorias) }}</td>
+            <td>{{ form_widget(form.producto) }}</td>
+            
+
+            <td>{{ form_widget(form.precioUnitario) }}</td>
+            <td>{{ form_widget(form.cantidadProducto) }}</td>
+            <td>{{ form_widget(form.importe) }}</td>
+            
+        {% endif %}
+    {% endspaceless %}
+{% endblock form_rows %}

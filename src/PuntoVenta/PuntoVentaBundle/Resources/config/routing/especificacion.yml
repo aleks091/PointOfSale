@@ -1,0 +1,39 @@
+especificacion:
+    pattern:  /
+    defaults: { _controller: "PuntoVentaBundle:Especificacion:index", id: 0 }
+
+
+especificacion_categoria:
+    pattern:  /categoria/{id}
+    defaults: { _controller: "PuntoVentaBundle:Especificacion:index", id: 0 }
+    requirements:
+            id: \d+
+
+especificacion_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PuntoVentaBundle:Especificacion:show" }
+
+especificacion_new:
+    pattern:  /new/categoria/{id}
+    defaults: { _controller: "PuntoVentaBundle:Especificacion:new" , id: 0}
+    requirements:
+            id: \d+
+
+especificacion_create:
+    pattern:  /create
+    defaults: { _controller: "PuntoVentaBundle:Especificacion:create" }
+    requirements: { _method: post }
+
+especificacion_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PuntoVentaBundle:Especificacion:edit" }
+
+especificacion_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PuntoVentaBundle:Especificacion:update" }
+    requirements: { _method: post|put }
+
+especificacion_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PuntoVentaBundle:Especificacion:delete" }
+    requirements: { _method: post|delete }

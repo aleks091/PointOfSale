@@ -1,0 +1,11 @@
+{% extends '::base.html.twig' %}
+{% block submenu %}
+	
+<ul id="sectionSubmenu">			
+	<li><a href="{{ path('especificacion_new', {'id' : app.request.attributes.get('id')}) }}">Agregar especificacion</a></li>
+	<li><a href="{{ path('especificacion_categoria', {'id': app.request.attributes.get('id')}) }}">Ver especificaciones</a></li>
+</ul>
+
+
+{% endblock %}
+{% block body %}{% endblock %}

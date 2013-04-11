@@ -1,0 +1,51 @@
+{% extends 'PuntoVentaBundle:Especificacion:main.html.twig' %}
+{% block javascripts %} 
+    {{ parent() }}
+    <script type="text/javascript"> 
+    var sourceSelector = "#categorias";
+    var onchangeUrlAction = "{{ path('especificacion') }}";
+    </script>
+
+    <script type="text/javascript" src="{{ asset('../web/bundles/puntoventa/js/dropdownchangereplacehtml.js') }}"></script>  
+{% endblock %}
+
+{% block body -%}
+    <div id="section-title-div"> 
+        <label id="section-title">Especificaciones para {{ categoriaNombre }}</label>
+    </div>
+
+
+
+    <span>Seleccione Categoria: </span>
+    <select id="categorias" name="especificacion[categoria]" class="fit-parent-width">
+        {% for categoria in categorias %}
+            <option value="{{ categoria.id }}" {{ categoria.isSelected }}>{{ categoria.nombre }}</option>
+        {% endfor %}
+    </select><br><br>
+
+    
+
+    <table class="multipleRowsTable">
+        <thead>
+            <tr>
+                <th>Categoria</th>
+                <th>Especificacion</th>
+                <th>Acciones</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.categoria.nombre }}</td>
+                <td>{{ entity.especificacion }}</td>
+                <td>
+                
+                        <a href="{{ path('descripcionespecificacion_new', { 'id': entity.id }) }}">Descripcion</a>
+                    |
+                        <a href="{{ path('especificacion_edit', { 'id': entity.id }) }}">Editar</a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    {% endblock %}

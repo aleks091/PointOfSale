@@ -28,6 +28,13 @@ class Cliente
      * @ORM\Column(name="nombre", type="string", length=255)
      */
     private $nombre;
+    
+    /**
+     * @var string
+     *
+     * @ORM\Column(name="rfc", type="string", length=255, nullable=true)
+     */
+    private $rfc;
 
     /**
      * @var string
@@ -253,5 +260,28 @@ class Cliente
     public function getVentas()
     {
         return $this->ventas;
+    }
+
+    /**
+     * Set rfc
+     *
+     * @param string $rfc
+     * @return Cliente
+     */
+    public function setRfc($rfc)
+    {
+        $this->rfc = $rfc;
+    
+        return $this;
+    }
+
+    /**
+     * Get rfc
+     *
+     * @return string 
+     */
+    public function getRfc()
+    {
+        return $this->rfc;
     }
 }

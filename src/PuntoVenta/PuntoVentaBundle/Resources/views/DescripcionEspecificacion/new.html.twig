@@ -1,0 +1,26 @@
+{% extends '::base.html.twig' %}
+
+{% form_theme form '::fields.html.twig' %}
+
+{% block body -%}
+    <div id="section-title-div"> 
+        <label id="section-title">Descripcion 
+        </label>
+    </div>
+
+    <form action="{{ path('descripcionespecificacion_create') }}" method="post" {{ form_enctype(form) }}>
+        Especificacion: {{ entity.especificacion.especificacion }}
+        {{ form_widget(form) }}
+        <p>
+            <input type="submit" value="Agregar" />
+        </p>
+    </form>
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('descripcionespecificacion') }}">
+            Back to the list
+        </a>
+    </li>
+</ul>
+{% endblock %}

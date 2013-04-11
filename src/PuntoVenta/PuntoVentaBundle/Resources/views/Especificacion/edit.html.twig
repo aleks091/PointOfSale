@@ -1,0 +1,18 @@
+{% extends 'PuntoVentaBundle:Especificacion:main.html.twig' %}
+
+{% form_theme edit_form '::fields.html.twig' %}
+
+{% block body -%}
+    <div id="section-title-div"> 
+        <label id="section-title">Editar Especificacion</label>
+    </div>
+
+
+    <form action="{{ path('especificacion_update', { 'id': entity.id }) }}" method="post" {{ form_enctype(edit_form) }}>
+        <input type="hidden" name="_method" value="PUT" />
+        {{ form_widget(edit_form) }}
+        <p>
+            <input type="submit" value="Editar" />
+        </p>
+    </form>
+{% endblock %}
