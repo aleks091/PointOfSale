@@ -45,13 +45,13 @@ class Venta
     private $clienteId;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="Venta")
+    * @ORM\ManyToOne(targetEntity="Cliente", inversedBy="ventas")
     * @ORM\JoinColumn(name="clienteId", referencedColumnName="id")
     */
     private $cliente;
 
     /**
-    * @ORM\ManyToOne(targetEntity="VentaEstatus", inversedBy="Venta")
+    * @ORM\ManyToOne(targetEntity="VentaEstatus", inversedBy="ventas")
     * @ORM\JoinColumn(name="ventaEstusId", referencedColumnName="id")
     */
     private $ventaEstatus;
@@ -64,7 +64,7 @@ class Venta
     private $ventaEstusId;
 
     /**
-     * @ORM\OneToMany(targetEntity="VentaUnitaria", mappedBy="Venta")
+     * @ORM\OneToMany(targetEntity="VentaUnitaria", mappedBy="venta")
      */
     protected $ventasUnitarias;
 

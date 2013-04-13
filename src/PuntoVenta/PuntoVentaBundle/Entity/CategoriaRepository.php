@@ -3,6 +3,7 @@
 namespace PuntoVenta\PuntoVentaBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\Common\Collections\ArrayCollection;
 
 /**
  * CategoriaRepository
@@ -19,5 +20,9 @@ class CategoriaRepository extends EntityRepository
 			->select('c')
 			->from('PuntoVentaBundle:Categoria', 'c')
 			->orderBy('c.nombre', 'ASC');
+	}
+	
+	public function getCategoriasByNombreResult(){
+		return new ArrayCollection($this->getCategoriasByNombre()->getQuery()->getArrayResult());
 	}
 }

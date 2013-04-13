@@ -45,7 +45,7 @@ class Producto
     private $categoriaId;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="producto")
+    * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="productos")
     * @ORM\JoinColumn(name="categoriaId", referencedColumnName="id")
     */
     protected $categoria;
@@ -61,7 +61,7 @@ class Producto
     protected $fotosProducto;
 
     /**
-     * @ORM\ManyToMany(targetEntity="DescripcionEspecificacion")
+     * @ORM\ManyToMany(targetEntity="DescripcionEspecificacion", inversedBy="productos")
      * @ORM\JoinTable(name="ProductoEspecificaciones",
      *      joinColumns={@ORM\JoinColumn(name="descripcionEspecificacionId", referencedColumnName="id")},
      *      inverseJoinColumns={@ORM\JoinColumn(name="productoId", referencedColumnName="id")}

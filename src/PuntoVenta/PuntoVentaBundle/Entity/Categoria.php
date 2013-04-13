@@ -45,7 +45,7 @@ class Categoria
     protected $productos;
 
     /**
-     * @ORM\OneToMany(targetEntity="Especificacion", mappedBy="Categoria")
+     * @ORM\OneToMany(targetEntity="Especificacion", mappedBy="categoria")
      */
     protected $especificaciones;
 

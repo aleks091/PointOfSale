@@ -29,3 +29,8 @@ _especificacion:
 _descripcion:
         resource: "@PuntoVentaBundle/Resources/config/routing/descripcionespecificacion.yml"
         prefix:   /descripcion
+        
+_ventaunitaria:
+        resource: "@PuntoVentaBundle/Resources/config/routing/ventaunitaria.yml"
+        prefix:   /ventaunitaria
+        

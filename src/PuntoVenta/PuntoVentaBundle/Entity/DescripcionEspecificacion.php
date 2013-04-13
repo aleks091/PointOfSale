@@ -36,13 +36,13 @@ class DescripcionEspecificacion
     private $especificacionId;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Especificacion", inversedBy="DescripcionEspecificacion")
+    * @ORM\ManyToOne(targetEntity="Especificacion", inversedBy="descripcionesEspecificacion")
     * @ORM\JoinColumn(name="especificacionId", referencedColumnName="id")
     */
     protected $especificacion;
 
     /**
-     * @ORM\ManyToMany(targetEntity="Producto", mappedBy="descripcionEspecificacion")
+     * @ORM\ManyToMany(targetEntity="Producto", mappedBy="descripcionEspecificaciones")
      */
     protected $productos;
 

@@ -72,7 +72,7 @@ class Cliente
     private $observaciones;
 
     /**
-     * @ORM\OneToMany(targetEntity="Venta", mappedBy="Cliente")
+     * @ORM\OneToMany(targetEntity="Venta", mappedBy="cliente")
      */
     protected $ventas;
 

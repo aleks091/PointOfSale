@@ -29,7 +29,7 @@ class CodigoBarra
     private $productoId;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Producto", inversedBy="codigoBarra")
+    * @ORM\ManyToOne(targetEntity="Producto", inversedBy="codigosBarras")
     * @ORM\JoinColumn(name="productoId", referencedColumnName="id")
     */
     protected $producto;

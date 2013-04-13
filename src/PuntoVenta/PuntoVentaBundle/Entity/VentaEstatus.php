@@ -30,7 +30,7 @@ class VentaEstatus
     private $descripcion;
 
      /**
-     * @ORM\OneToMany(targetEntity="Venta", mappedBy="VentaEstatus")
+     * @ORM\OneToMany(targetEntity="Venta", mappedBy="ventaEstatus")
      */
     protected $ventas;
 

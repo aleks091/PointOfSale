@@ -6,6 +6,68 @@ use Symfony\Bundle\FrameworkBundle\Test\WebTestCase;
 
 class CategoriaControllerTest extends WebTestCase
 {
+    public function testMostrarCategorias(){
+
+        $client = static::createClient();
+
+        $client->enableProfiler();
+
+        $client->request('GET', '/categoria/');
+
+        if ($profile = $client->getProfile()) {
+
+
+            $duracionPeticion = $profile->getCollector('time')->getDuration();
+
+            $this->assertLessThan(
+                2,
+                $profile->getCollector('db')->getQueryCount()
+            );
+
+
+            $this->assertLessThan(
+                3000, // 1 seg = 10,000
+                $duracionPeticion,
+                'Duracion de la peticion: ' . $duracionPeticion
+            );
+        }
+    }
+
+	public function testAgregarCategoria(){
+		
+		$client = static::createClient();		
+		
+		$crawler = $client->request('GET', '/categoria/new');		
+		
+		$form = $crawler->selectButton('Agregar')->form(array(
+				'puntoventa_puntoventabundle_categoriatype[nombre]'  => 'Categoria Unit Test',
+		));
+		
+		$client->submit($form);
+
+        $this->assertEquals(
+            302, $client->getResponse()->getStatusCode()
+        );
+
+
+        $this->assertTrue(
+				$client->getResponse()->isRedirect('/categoria/')
+		);
+	}
+
+    public function testCategoria(){
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/categoria/1/edit');
+        $this->assertGreaterThan(
+            0,
+            $crawler->filter('html:contains("Categoria")')->count()
+        );
+
+    }
+	
+	
+	
+	
     /*
     public function testCompleteScenario()
     {

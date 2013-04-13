@@ -36,7 +36,7 @@ class FotoProducto
     private $productoId;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Producto", inversedBy="fotoProducto")
+    * @ORM\ManyToOne(targetEntity="Producto", inversedBy="fotosProducto")
     * @ORM\JoinColumn(name="productoId", referencedColumnName="id")
     */
     protected $producto;

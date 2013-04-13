@@ -30,7 +30,7 @@ class Especificacion
     private $categoriaId;
 
     /**
-    * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="Especificacion")
+    * @ORM\ManyToOne(targetEntity="Categoria", inversedBy="especificaciones")
     * @ORM\JoinColumn(name="categoriaId", referencedColumnName="id")
     */
     protected $categoria;
@@ -45,7 +45,7 @@ class Especificacion
     private $especificacion;
 
    /**
-     * @ORM\OneToMany(targetEntity="DescripcionEspecificacion", mappedBy="Especificacion")
+     * @ORM\OneToMany(targetEntity="DescripcionEspecificacion", mappedBy="especificacion")
      */
     protected $descripcionesEspecificacion;
 

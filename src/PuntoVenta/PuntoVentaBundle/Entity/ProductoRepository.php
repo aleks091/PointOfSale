@@ -3,6 +3,7 @@
 namespace PuntoVenta\PuntoVentaBundle\Entity;
 
 use Doctrine\ORM\EntityRepository;
+use Doctrine\ORM\NoResultException;
 
 /**
  * ProductoRepository
@@ -22,7 +23,7 @@ class ProductoRepository extends EntityRepository
 							->orderBy('c.nombre', 'ASC')
 							->setMaxResults(1)
 							->getQuery()
-							->getScalarResult();
+							->getSingleScalarResult();
 
 		
 		return $repository->createQueryBuilder()
@@ -36,8 +37,11 @@ class ProductoRepository extends EntityRepository
 	}
 	
 	public function getFirstProductoOfFirstCategory(){
-		return $this->getProductosOfFirstCategory()
-				->getQuery()
-				->getSingleResult();
+
+        $producto = $this->getProductosOfFirstCategory()
+                            ->getQuery()
+                            ->getFirstResult();
+
+        return ($producto == null) ? new Producto() : $producto;
 	}
 }
