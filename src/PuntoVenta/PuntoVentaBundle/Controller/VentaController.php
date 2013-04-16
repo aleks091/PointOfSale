@@ -72,7 +72,8 @@ class VentaController extends Controller
     public function newAction()
     {
         $entity = new Venta();
-        $ventaUnitaria = new VentaUnitaria();   
+        $ventaUnitaria = new VentaUnitaria();
+        $ventaUnitaria->setProductoId(3);
                
         $em = $this->getDoctrine()->getManager();          
         
@@ -197,7 +198,7 @@ class VentaController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm($id)
     {

@@ -52,4 +52,10 @@ class VentaControllerTest extends WebTestCase
     }
 
     */
+
+    public function testNewSale(){
+        $client = static::createClient();
+        $crawler = $client->request('GET', '/');
+        $this->assertTrue(true);
+    }
 }

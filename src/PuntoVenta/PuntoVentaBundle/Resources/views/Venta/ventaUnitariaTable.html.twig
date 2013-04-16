@@ -1,13 +1,12 @@
 {% block javascripts %}
-<script type="text/javascript" src="{{ asset('../web/bundles/puntoventa/js/venta/adddeleteventaunitaria.js') }}">   
-  
+<script type="text/javascript"
+        src="{{ asset('bundles/puntoventa/js/venta/adddeleteventaunitaria.js') }}">
 
 </script>
 {% endblock %}
 
-{% form_theme ventasUnitarias 'PuntoVentaBundle:Venta:Themes/ventaUnitariaTableTheme.html.twig' %}
 
-<table class="subTable" id="ventasUnitarias" data-prototype="{{ form_widget(venta.ventasUnitarias.vars.prototype)|e }}">
+<table class="subTable" id="ventasUnitarias">
     <tr>
         <th>Clave Prod.</th>
         <th>Categoria</th>
@@ -17,19 +16,8 @@
         <th>Importe</th>
     </tr>
 
-    {% for form in ventasUnitarias %} 
-        <tr class="ventaUnitaria"> 
-            <td>{{ form_widget(form.productoId) }}</td>
-            <td>{{ form_widget(form.categorias) }}</td>
-            <td>{{ form_widget(form.producto) }}</td>
-            
+    {% render url('ventaunitaria_new') %}
 
-            <td>{{ form_widget(form.precioUnitario) }}</td>
-            <td>{{ form_widget(form.cantidadProducto) }}</td>
-            <td>{{ form_widget(form.importe) }}</td>
-                
-        </tr>   
-    {% endfor %}    
 </table>
 
  <input id='nuevaVentaUnitaria' type="submit" value="Nuevo" />

@@ -27,7 +27,7 @@ class ProductoRepository extends EntityRepository
 
 		
 		return $repository->createQueryBuilder()
-							->select(array('p'))
+							->select('p')
 							->from('PuntoVentaBundle:Producto', 'p')
 							->innerJoin('p.categoria', 'c')
 							->orderBy('p.descripcion', 'ASC')
@@ -39,8 +39,9 @@ class ProductoRepository extends EntityRepository
 	public function getFirstProductoOfFirstCategory(){
 
         $producto = $this->getProductosOfFirstCategory()
+                            ->setMaxResults(1)
                             ->getQuery()
-                            ->getFirstResult();
+                            ->getSingleResult();
 
         return ($producto == null) ? new Producto() : $producto;
 	}

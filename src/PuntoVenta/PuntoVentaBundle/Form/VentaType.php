@@ -10,15 +10,9 @@ class VentaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-        $attrForVentasUnitarias = array('type' => new VentaUnitariaType(),             
-            'allow_add' => true, 
-            'allow_delete' => true,
-            'by_reference' => false);
-
         $builder
             ->add('fechaRealizada')
             ->add('clienteId')
-            ->add('ventasUnitarias', 'collection', $attrForVentasUnitarias)
             ->add('fechaPagada')
             ->add('total')
             ->add('subtotal')

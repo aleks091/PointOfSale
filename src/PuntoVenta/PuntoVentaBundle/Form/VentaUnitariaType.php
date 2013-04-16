@@ -28,13 +28,12 @@ class VentaUnitariaType extends AbstractType
     							 });
     	
         $builder
-        	->add('productoId', 'text')
+        	->add('productoId', 'text', array('attr' => array('class' => 'numeric-small-width')))
         	->add('categoria', 'entity', $attrForCategoria)
         	->add('producto', 'entity', $attrForProducto)            
-            ->add('precioUnitario', 'text', array('mapped' => false, 'attr' => array('value' => $options['attr']['precioUnitario'])))
-            ->add('cantidadProducto', 'number', array('attr'=>array('value' => $options['attr']['cantidadProducto'])))
-            ->add('importe')
-            ->add('productoId')            
+            ->add('precioUnitario', 'text', array('attr' => array( 'class' => 'numeric-small-width')))
+            ->add('cantidadProducto', null, array('attr' => array('class' => 'numeric-small-width')))
+            ->add('importe', null, array('attr' => array('class' => 'numeric-small-width')))
         ;
     }
 

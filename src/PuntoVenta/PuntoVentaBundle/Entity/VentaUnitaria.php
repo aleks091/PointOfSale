@@ -32,6 +32,13 @@ class VentaUnitaria
     /**
      * @var float
      *
+     * @ORM\Column(name="precioUnitario", type="float")
+     */
+    private $precioUnitario;
+
+    /**
+     * @var float
+     *
      * @ORM\Column(name="importe", type="float")
      */
     private $importe;
@@ -55,10 +62,7 @@ class VentaUnitaria
     * @ORM\JoinColumn(name="productoId", referencedColumnName="id")
     */
     protected $producto;
-    
-    
-  	protected $productos;
-  	
+
     protected $categoria;
 
 
@@ -69,18 +73,9 @@ class VentaUnitaria
     protected $venta;
     
     function __construct(){
-    	$this->productos = new ArrayCollection();
     	$this->categorias = new ArrayCollection();
     }
-    
-    
-    public function getProductos(){
-    	return $this->productos;
-    }
-    public function setProductos(ArrayCollection $productos){
-    	$this->productos = $productos;
-    }
-    
+
     public function getCategorias(){
     	return $this->categorias;
     }
@@ -213,7 +208,7 @@ class VentaUnitaria
     {
         return $this->venta;
     }
-    
+
     /**
      * Set categoria
      *
@@ -223,10 +218,10 @@ class VentaUnitaria
     public function setCategoria(\PuntoVenta\PuntoVentaBundle\Entity\Categoria $categoria = null)
     {
     	$this->categoria = $categoria;
-    
+
     	return $this;
     }
-    
+
     /**
      * Get categoria
      *
@@ -258,5 +253,28 @@ class VentaUnitaria
     public function getProducto()
     {
         return $this->producto;
+    }
+
+    /**
+     * Set precioUnitario
+     *
+     * @param float $precioUnitario
+     * @return VentaUnitaria
+     */
+    public function setPrecioUnitario($precioUnitario)
+    {
+        $this->precioUnitario = $precioUnitario;
+    
+        return $this;
+    }
+
+    /**
+     * Get precioUnitario
+     *
+     * @return float 
+     */
+    public function getPrecioUnitario()
+    {
+        return $this->precioUnitario;
     }
 }
