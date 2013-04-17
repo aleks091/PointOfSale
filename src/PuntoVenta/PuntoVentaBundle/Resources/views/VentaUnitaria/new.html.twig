@@ -1,0 +1,9 @@
+
+{% block body -%}
+<td>{{ form_widget(form.productoId, { 'full_name': 'puntoventa_puntoventabundle_ventaunitariatype['~ index ~'][productoId]' }) }}</td>
+<td>{{ form_widget(form.categoria, { 'full_name': 'puntoventa_puntoventabundle_ventaunitariatype['~ index ~'][categoria]' }) }}</td>
+<td>{{ form_widget(form.producto, { 'full_name': 'puntoventa_puntoventabundle_ventaunitariatype['~ index ~'][producto]' }) }}</td>
+<td>{{ form_widget(form.precioUnitario, { 'full_name': 'puntoventa_puntoventabundle_ventaunitariatype['~ index ~'][precioUnitario]' }) }}</td>
+<td>{{ form_widget(form.cantidadProducto, { 'full_name': 'puntoventa_puntoventabundle_ventaunitariatype['~ index ~'][cantidadProducto]' }) }}</td>
+<td>{{ form_widget(form.importe, { 'full_name': 'puntoventa_puntoventabundle_ventaunitariatype['~ index ~'][importe]' }) }}</td>
+{% endblock %}
