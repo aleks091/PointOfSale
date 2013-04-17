@@ -1,0 +1,30 @@
+ventaunitaria:
+    pattern:  /
+    defaults: { _controller: "PuntoVentaBundle:VentaUnitaria:index" }
+
+ventaunitaria_show:
+    pattern:  /{id}/show
+    defaults: { _controller: "PuntoVentaBundle:VentaUnitaria:show" }
+
+ventaunitaria_new:
+    pattern:  /new
+    defaults: { _controller: "PuntoVentaBundle:VentaUnitaria:new" }
+
+ventaunitaria_create:
+    pattern:  /create
+    defaults: { _controller: "PuntoVentaBundle:VentaUnitaria:create" }
+    requirements: { _method: post }
+
+ventaunitaria_edit:
+    pattern:  /{id}/edit
+    defaults: { _controller: "PuntoVentaBundle:VentaUnitaria:edit" }
+
+ventaunitaria_update:
+    pattern:  /{id}/update
+    defaults: { _controller: "PuntoVentaBundle:VentaUnitaria:update" }
+    requirements: { _method: post|put }
+
+ventaunitaria_delete:
+    pattern:  /{id}/delete
+    defaults: { _controller: "PuntoVentaBundle:VentaUnitaria:delete" }
+    requirements: { _method: post|delete }
