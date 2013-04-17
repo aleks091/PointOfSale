@@ -1,4 +1,9 @@
 {% block javascripts %}
+
+<script type="text/javascript">
+    var ajaxAddUnitSaleUrl = "{{ path('ventaunitaria_new') }}";
+    var deleteIcoPath = "{{ asset('bundles/puntoventa/images/delete.ico') }}";
+</script>
 <script type="text/javascript"
         src="{{ asset('bundles/puntoventa/js/venta/adddeleteventaunitaria.js') }}">
 

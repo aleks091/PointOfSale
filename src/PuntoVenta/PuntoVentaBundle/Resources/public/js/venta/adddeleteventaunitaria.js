@@ -14,7 +14,7 @@
 
     function addTagFormDeleteLink($tagFormLi) {
 
-        var $removeFormA = $('<td><a class="removeVentaUnitaria" href="#" ><img src="../bundles/puntoventa/images/delete.ico"></a></td>');
+        var $removeFormA = $('<td><a class="removeVentaUnitaria" href="#" ><img src='+ deleteIcoPath +'></a></td>');
         $tagFormLi.append($removeFormA);
 
         $removeFormA.on('click', function(e) {
@@ -31,7 +31,7 @@
         $.ajax({
             type: "POST",
             data: {index: index},
-            url: "ventaunitaria/new",
+            url: ajaxAddUnitSaleUrl,
             success: function (data) {
                 collectionHolder.data('index', index + 1);
 
