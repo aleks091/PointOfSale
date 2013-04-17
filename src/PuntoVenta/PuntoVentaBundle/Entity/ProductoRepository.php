@@ -35,6 +35,8 @@ class ProductoRepository extends EntityRepository
 							->setParameter('categoryId', $firstCategoria);					
 	
 	}
+
+
 	
 	public function getFirstProductoOfFirstCategory(){
 

@@ -1,13 +1,17 @@
 {% extends '::base.html.twig' %}
 
-{% form_theme venta '::fields.html.twig' %}
+{%  if venta is defined %}
+    {% form_theme venta '::fields.html.twig' %}
+{% endif %}
 
 
 {% block javascripts %}
     {{ parent() }}
 
 <script type="text/javascript">
-    var clienteId = {{ clienteId }};
+    {%  if clienteId is defined %}
+        var clienteId = {{ clienteId }};
+    {% endif %}
 </script>
 
 

@@ -24,19 +24,22 @@
     }
 
     function addTagForm(collectionHolder) {
-        // get the new index
-        var index = collectionHolder.data('index');
-
         //Enviar el indice al controlador para
         // establecer el arreglo de ventas unitarias
-        alert(index);
+        var index = collectionHolder.data('index');
 
-        var newForm = "<td>Nueva Forma</td>";
+        $.ajax({
+            type: "POST",
+            data: {index: index},
+            url: "ventaunitaria/new",
+            success: function (data) {
+                collectionHolder.data('index', index + 1);
 
-        // increase the index with one for the next item
-        collectionHolder.data('index', index + 1);
+                var $newFormLi = $('<tr class="ventaUnitaria"></tr>').append(data);
+                addTagFormDeleteLink($newFormLi);
+                collectionHolder.append($newFormLi);
+            }
+        });
 
-        var $newFormLi = $('<tr class="ventaUnitaria"></tr>').append(newForm);
-        addTagFormDeleteLink($newFormLi);
-        collectionHolder.append($newFormLi);        
+
     }

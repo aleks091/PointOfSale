@@ -57,8 +57,11 @@ class VentaUnitariaController extends Controller
      * Displays a form to create a new VentaUnitaria entity.
      *
      */
-    public function newAction()
+    public function newAction(Request $request)
     {
+        $index = $request->get('index');
+        $index = ($index == null) ? 1 : $index;
+
         $em = $this->getDoctrine()->getManager();
         $producto = $em->getRepository('PuntoVentaBundle:Producto')
             ->getFirstProductoOfFirstCategory();
@@ -75,6 +78,7 @@ class VentaUnitariaController extends Controller
         $form   = $this->createForm(new VentaUnitariaType(), $entity);
 
         return $this->render('PuntoVentaBundle:VentaUnitaria:new.html.twig', array(
+            'index' => $index,
             'entity' => $entity,
             'form'   => $form->createView(),
         ));

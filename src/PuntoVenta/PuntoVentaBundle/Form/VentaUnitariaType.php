@@ -14,23 +14,24 @@ class VentaUnitariaType extends AbstractType
 {
     public function buildForm(FormBuilderInterface $builder, array $options)
     {
-    	
-    	$attrForProducto = array('class' => 'PuntoVentaBundle:Producto', 
+
+    	$attrForProductos = array('class' => 'PuntoVentaBundle:Producto',
     							 'property' => 'descripcion',
     							 'query_builder' => function(ProductoRepository $repository){
     									return $repository->getProductosOfFirstCategory();
     							 });
     	
-    	$attrForCategoria = array('class' => 'PuntoVentaBundle:Categoria', 
+    	$attrForCategoria = array('class' => 'PuntoVentaBundle:Categoria',
+                                 'mapped' => false,
     							 'property' => 'nombre',
     							 'query_builder' => function(CategoriaRepository $repository){
     									return $repository->getCategoriasByNombre();
     							 });
     	
         $builder
-        	->add('productoId', 'text', array('attr' => array('class' => 'numeric-small-width')))
+        	->add('productoId', 'text',  array('attr' => array( 'class' => 'numeric-small-width')))
         	->add('categoria', 'entity', $attrForCategoria)
-        	->add('producto', 'entity', $attrForProducto)            
+        	->add('producto', 'entity', $attrForProductos)
             ->add('precioUnitario', 'text', array('attr' => array( 'class' => 'numeric-small-width')))
             ->add('cantidadProducto', null, array('attr' => array('class' => 'numeric-small-width')))
             ->add('importe', null, array('attr' => array('class' => 'numeric-small-width')))
