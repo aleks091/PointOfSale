@@ -2,6 +2,7 @@
 
 namespace PuntoVenta\PuntoVentaBundle\Entity;
 
+use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\ORM\Mapping as ORM;
 
 /**
@@ -35,6 +36,12 @@ class IVA
      * @ORM\Column(name="fechaAgregado", type="datetime")
      */
     private $fechaAgregado;
+
+    /**
+     * @ORM\OneToMany(targetEntity="Venta", mappedBy="iva")
+     */
+    private $ventas;
+
 
 
     /**
@@ -107,5 +114,45 @@ class IVA
         if($this->fechaAgregado === null){
             $this->fechaAgregado = new \DateTime();
         }
+    }
+    /**
+     * Constructor
+     */
+    public function __construct()
+    {
+        $this->ventas = new ArrayCollection();
+    }
+    
+    /**
+     * Add ventas
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\Venta $ventas
+     * @return IVA
+     */
+    public function addVenta(\PuntoVenta\PuntoVentaBundle\Entity\Venta $ventas)
+    {
+        $this->ventas[] = $ventas;
+    
+        return $this;
+    }
+
+    /**
+     * Remove ventas
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\Venta $ventas
+     */
+    public function removeVenta(\PuntoVenta\PuntoVentaBundle\Entity\Venta $ventas)
+    {
+        $this->ventas->removeElement($ventas);
+    }
+
+    /**
+     * Get ventas
+     *
+     * @return \Doctrine\Common\Collections\Collection 
+     */
+    public function getVentas()
+    {
+        return $this->ventas;
     }
 }

@@ -26,7 +26,7 @@
 
     <tr> 
         <td> Subtotal:</td>
-        <td><input id = "subtotal" type="text" class = "numeric-medium-width" name="venta[subtotal]" /> </td>
+        <td>{{ form_widget(venta.subtotal) }}</td>
         
         <td>Efectivo:</td>
         <td><input id="efectivo" type="text" class = "numeric-medium-width"  name="venta[efectivo]" /> </td>
@@ -47,7 +47,7 @@
         
         
         <td>Total:</td>
-        <td><input id="total" type="text" class = "numeric-medium-width"  name="venta[total]" /> </td>
+        <td>{{ form_widget(venta.total) }}</td>
         <td></td>
         <td></td>
         

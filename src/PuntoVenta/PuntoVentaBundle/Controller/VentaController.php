@@ -68,23 +68,28 @@ class VentaController extends Controller
      */
     public function newAction()
     {
-        $entity = new Venta();
+        $venta = new Venta();
         $ventaUnitaria = new VentaUnitaria();
-        $ventaUnitaria->setProductoId(3);
-               
-        $em = $this->getDoctrine()->getManager();          
-        
-        $entity->getVentasUnitarias()->add($ventaUnitaria);
-        $form = $this->createForm(new VentaType(), $entity);
+        $em = $this->getDoctrine()->getManager();
+
+        $producto = $em->getRepository('PuntoVentaBundle:Producto')
+            ->getFirstProductoOfFirstCategory();
+
+        $cantidadProducto = 1;
+        $importe = $producto->getPrecioUnitario() * $cantidadProducto;
+
+        $ventaUnitaria->setCantidadProducto($cantidadProducto);
+        $ventaUnitaria->setProductoId($producto->getId());
+        $ventaUnitaria->setImporte($importe);
+        $ventaUnitaria->setPrecioUnitario($producto->getPrecioUnitario());
 
 
-        $cliente = $em->getRepository('PuntoVentaBundle:Cliente')->findOneById(1);
-        $clienteForm   = $this->createForm(new ClienteType(), $cliente);
+        $venta->getVentasUnitarias()->add($ventaUnitaria);
+
+        $form = $this->createForm(new VentaType(), $venta);
 
         return $this->render('PuntoVentaBundle:Venta:new.html.twig', array(
-            'cliente'=> $clienteForm->createView(),
-            'clienteId' => $cliente->getId(),
-            'entity' => $entity,
+            'entity' => $venta,
             'venta'   => $form->createView(),
         ));
     }

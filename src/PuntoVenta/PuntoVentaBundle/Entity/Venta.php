@@ -33,7 +33,7 @@ class Venta
     /**
      * @var \DateTime
      *
-     * @ORM\Column(name="fechaPagada", type="datetimetz")
+     * @ORM\Column(name="fechaPagada", type="datetime", nullable=true)
      */
     private $fechaPagada;
 
@@ -64,7 +64,7 @@ class Venta
     private $ventaEstusId;
 
     /**
-     * @ORM\OneToMany(targetEntity="VentaUnitaria", mappedBy="venta")
+     * @ORM\OneToMany(targetEntity="VentaUnitaria", mappedBy="venta", cascade={"persist"})
      */
     protected $ventasUnitarias;
 
@@ -74,6 +74,20 @@ class Venta
      * @ORM\Column(name="total", type="float")
      */
     private $total;
+
+
+    /**
+     * @var integer
+     *
+     * @ORM\Column(name="ivaId", type="integer")
+     */ 
+    private $ivaId;
+
+    /**
+     * @ORM\ManyToOne(targetEntity="IVA", inversedBy="ventas")
+     * @ORM\JoinColumn(name="ivaId", referencedColumnName="id")
+     */
+    private $iva;
 
     /**
      * @var float
@@ -351,5 +365,76 @@ class Venta
     public function getVentasUnitarias()
     {
         return $this->ventasUnitarias;
+    }
+
+
+
+    /**
+     * Set porcentajeIva
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\IVA $porcentajeIva
+     * @return Venta
+     */
+    public function setPorcentajeIva(\PuntoVenta\PuntoVentaBundle\Entity\IVA $porcentajeIva = null)
+    {
+        $this->porcentajeIva = $porcentajeIva;
+    
+        return $this;
+    }
+
+    /**
+     * Get porcentajeIva
+     *
+     * @return \PuntoVenta\PuntoVentaBundle\Entity\IVA 
+     */
+    public function getPorcentajeIva()
+    {
+        return $this->porcentajeIva;
+    }
+
+    /**
+     * Set ivaId
+     *
+     * @param integer $ivaId
+     * @return Venta
+     */
+    public function setIvaId($ivaId)
+    {
+        $this->ivaId = $ivaId;
+    
+        return $this;
+    }
+
+    /**
+     * Get ivaId
+     *
+     * @return integer 
+     */
+    public function getIvaId()
+    {
+        return $this->ivaId;
+    }
+
+    /**
+     * Set iva
+     *
+     * @param \PuntoVenta\PuntoVentaBundle\Entity\IVA $iva
+     * @return Venta
+     */
+    public function setIva(\PuntoVenta\PuntoVentaBundle\Entity\IVA $iva = null)
+    {
+        $this->iva = $iva;
+    
+        return $this;
+    }
+
+    /**
+     * Get iva
+     *
+     * @return \PuntoVenta\PuntoVentaBundle\Entity\IVA 
+     */
+    public function getIva()
+    {
+        return $this->iva;
     }
 }

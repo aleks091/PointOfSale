@@ -26,19 +26,23 @@
     <form action="{{ path('venta_create') }}" method="post" {{ form_enctype(venta) }}>
 
         <span class="subTitle">Cliente</span>
-        {% include 'PuntoVentaBundle:Cliente:searchCliente.html.twig'
-             with {'cliente': cliente} %}
-            
+
+
+            {% include 'PuntoVentaBundle:Cliente:searchCliente.html.twig'
+                 with {'cliente': venta.cliente} %}
         <div class="bottomBorderDiv"></div>
            
-      
-        {% include 'PuntoVentaBundle:Venta:ventaUnitariaTable.html.twig' %}
+
+            {% include 'PuntoVentaBundle:Venta:ventaUnitariaTable.html.twig'
+                with {'ventasUnitarias': venta.ventasUnitarias} %}
 
 
         <div class="bottomBorderDiv"></div>
 
-         {% include 'PuntoVentaBundle:Venta:ventaTotal.html.twig' %} 
+             {% include 'PuntoVentaBundle:Venta:ventaTotal.html.twig'
+                with {'venta': venta} %}
+
         <input type="submit" value="Registrar" />
-     
+        {{ form_widget(venta._token) }}
     </form>
 {% endblock %}

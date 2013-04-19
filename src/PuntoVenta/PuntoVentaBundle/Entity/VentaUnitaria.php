@@ -63,25 +63,16 @@ class VentaUnitaria
     */
     protected $producto;
 
-    protected $categoria;
-
 
     /**
-    * @ORM\ManyToOne(targetEntity="Venta", inversedBy="ventasUnitarias")
+    * @ORM\ManyToOne(targetEntity="Venta", inversedBy="ventasUnitarias", cascade={"persist"})
     * @ORM\JoinColumn(name="ventaId", referencedColumnName="id")
     */
     protected $venta;
     
-    function __construct(){
-    	$this->categorias = new ArrayCollection();
-    }
 
-    public function getCategorias(){
-    	return $this->categorias;
-    }
-    public function setCategorias(ArrayCollection $categorias){
-    	$this->categorias = $categorias;
-    }
+
+
 
 
     /**
@@ -209,29 +200,7 @@ class VentaUnitaria
         return $this->venta;
     }
 
-    /**
-     * Set categoria
-     *
-     * @param \PuntoVenta\PuntoVentaBundle\Entity\Categoria $categoria
-     * @return VentaUnitaria
-     */
-    public function setCategoria(\PuntoVenta\PuntoVentaBundle\Entity\Categoria $categoria = null)
-    {
-    	$this->categoria = $categoria;
-
-    	return $this;
-    }
-
-    /**
-     * Get categoria
-     *
-     * @return \PuntoVenta\PuntoVentaBundle\Entity\Categoria
-     */
-    public function getCategoria()
-    {
-    	return $this->categoria;
-    }
-
+    
     /**
      * Set producto
      *

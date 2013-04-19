@@ -1,0 +1,13 @@
+{% block choice_widget_collapsed %}
+    {% spaceless %}
+        {% for group_label, choice in choices %}
+            <input id="ventaClienteId" type="hidden" value="{{ choice.value }}" name="puntoventa_puntoventabundle_ventatype[cliente]"  />
+            <input type="text" value="{{ choice.label|trans({},
+            translation_domain) }}" />
+        {% endfor %}
+    {% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block entity_widget %}
+   {{ block('choice_widget') }}
+{% endblock %}

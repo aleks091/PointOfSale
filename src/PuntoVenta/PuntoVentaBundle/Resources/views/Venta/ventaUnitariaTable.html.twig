@@ -10,6 +10,7 @@
 </script>
 {% endblock %}
 
+{% form_theme ventasUnitarias 'PuntoVentaBundle:Venta:Themes/ventaUnitariaTableTheme.html.twig' %}
 
 <table class="subTable" id="ventasUnitarias">
     <tr>
@@ -20,9 +21,20 @@
         <th>Cantidad</th>
         <th>Importe</th>
     </tr>
-    <tr class="ventaUnitaria">
-        {% render url('ventaunitaria_new') %}
-    </tr>
+
+    {% for form in ventasUnitarias %}
+        <tr class="ventaUnitaria">
+            <td>{{ form_widget(form.productoId) }}</td>
+            <td>{{ form_widget(form.categoria) }}</td>
+            <td>{{ form_widget(form.producto) }}</td>
+
+
+            <td>{{ form_widget(form.precioUnitario) }}</td>
+            <td>{{ form_widget(form.cantidadProducto) }}</td>
+            <td>{{ form_widget(form.importe) }}</td>
+
+        </tr>
+    {% endfor %}
 </table>
 
  <input id='nuevaVentaUnitaria' type="submit" value="Nuevo" />

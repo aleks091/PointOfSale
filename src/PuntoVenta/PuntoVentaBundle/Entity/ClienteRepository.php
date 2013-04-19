@@ -12,5 +12,11 @@ use Doctrine\ORM\EntityRepository;
  */
 class ClienteRepository extends EntityRepository
 {
-	
+	public function getDefaultCliente(){
+        return $this->getEntityManager()->createQueryBuilder()
+                    ->select('c')
+                    ->from('PuntoVentaBundle:Cliente', 'c')
+                    ->where('c.nombre = :nombre')
+                    ->setParameter('nombre', "Publico General");
+    }
 }
