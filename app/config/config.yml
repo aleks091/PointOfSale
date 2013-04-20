@@ -25,6 +25,12 @@ twig:
     debug:            %kernel.debug%
     strict_variables: %kernel.debug%
 
+
+services:
+    debug.twig.extension.debug:
+        class:        Twig_Extension_Debug
+        tags:
+             - { name: 'twig.extension' }
 # Assetic Configuration
 assetic:
     debug:          %kernel.debug%

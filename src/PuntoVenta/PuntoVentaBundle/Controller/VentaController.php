@@ -74,9 +74,13 @@ class VentaController extends Controller
 
         $producto = $em->getRepository('PuntoVentaBundle:Producto')
             ->getFirstProductoOfFirstCategory();
+        $iva = $em->getRepository('PuntoVentaBundle:IVA')->findLatest();
 
         $cantidadProducto = 1;
         $importe = $producto->getPrecioUnitario() * $cantidadProducto;
+        $porcentajeIva =  1 + $iva->getIva() / 100;
+        $cantidadIva = $importe * $iva->getIva() / 100;
+        $ventaTotal = $importe * $porcentajeIva;
 
         $ventaUnitaria->setCantidadProducto($cantidadProducto);
         $ventaUnitaria->setProductoId($producto->getId());
@@ -85,8 +89,12 @@ class VentaController extends Controller
 
 
         $venta->getVentasUnitarias()->add($ventaUnitaria);
+        $venta->setSubtotal($importe);
+        $venta->setTotal($ventaTotal);
 
-        $form = $this->createForm(new VentaType(), $venta);
+        $optionsForVenta = array( 'attr' => array('cantidadIva' => $cantidadIva));
+
+        $form = $this->createForm(new VentaType(), $venta, $optionsForVenta);
 
         return $this->render('PuntoVentaBundle:Venta:new.html.twig', array(
             'entity' => $venta,

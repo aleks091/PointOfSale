@@ -1,0 +1,12 @@
+{% block choice_widget_collapsed %}
+    {% spaceless %}
+        {% for group_label, choice in choices %}
+            <input id="ivaId" type="hidden" value="{{ choice.value }}" name="puntoventa_puntoventabundle_ventatype[iva]"  />
+            <span>{{ choice.label | number_format(2) }} %</span>
+        {% endfor %}
+    {% endspaceless %}
+{% endblock choice_widget_collapsed %}
+
+{% block entity_widget %}
+    {{ block('choice_widget') }}
+{% endblock %}

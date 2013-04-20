@@ -24,14 +24,19 @@ class IVARepository extends EntityRepository
 		return $query->getResult();
 	}
 
+    public function findLatestQuery(){
+        $repository = $this->getEntityManager();
+
+        return $repository->createQueryBuilder()
+            ->select('i')
+            ->from('PuntoVentaBundle:IVA', 'i')
+            ->orderBy('i.fechaAgregado', 'DESC')
+            ->setMaxResults(1);
+    }
+
 	public function findLatest(){
-		$repository = $this->getEntityManager();
-	
-		$query = $repository->createQueryBuilder()
-							->select('i')
-							->from('PuntoVentaBundle:IVA', 'i')
-							->orderBy('i.fechaAgregado', 'DESC')
-							->setMaxResults(1)
+
+		$query = $this->findLatestQuery()
 							->getQuery();
 	
 		try{

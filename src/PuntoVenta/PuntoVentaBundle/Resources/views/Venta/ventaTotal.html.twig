@@ -1,3 +1,5 @@
+{% form_theme venta with 'PuntoVentaBundle:Venta:Themes/ventaTotalTheme.html.twig' %}
+
 <table>
 
     <tr>
@@ -7,7 +9,7 @@
         </td>
             
         <td>
-            11.00 %
+           {{ form_widget(venta.iva) }}
         </td>
         
         
@@ -16,7 +18,7 @@
         </td>
             
         <td>
-            12.30 x 1
+            {{ dump(venta)}}
         </td>
         
         <td><input id="ventaDolar" type="checkbox" name="isVentaEnDolar">Venta Dolar</td>
@@ -36,7 +38,7 @@
 
     <tr> 
         <td> I.V.A:</td>
-        <td><input id="iva" type="text"  class = "numeric-medium-width"  name="venta[iva]" /> </td>
+        <td>{{ form_widget(venta.cantidadIva) }}</td>
         
         <td>Cambio:</td>
         <td><input id="cambio" type="text" class = "numeric-medium-width"  name="venta[cambio]" /> </td>
