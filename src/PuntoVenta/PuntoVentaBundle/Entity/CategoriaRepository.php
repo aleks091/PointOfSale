@@ -25,4 +25,19 @@ class CategoriaRepository extends EntityRepository
 	public function getCategoriasByNombreResult(){
 		return new ArrayCollection($this->getCategoriasByNombre()->getQuery()->getArrayResult());
 	}
+
+    public function getAll(){
+        //Get all productos ordered  by categoria and descripcion
+        $repository = $this->getEntityManager();
+
+        return $repository->createQueryBuilder()
+            ->select('c')
+            ->from('PuntoVentaBundle:Categoria', 'c')
+            ->addOrderBy('c.nombre', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+
+
+    }
 }

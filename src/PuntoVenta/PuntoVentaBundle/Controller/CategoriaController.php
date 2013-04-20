@@ -22,7 +22,7 @@ class CategoriaController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('PuntoVentaBundle:Categoria')->findAll();
+        $entities = $em->getRepository('PuntoVentaBundle:Categoria')->getAll();
 
         return $this->render('PuntoVentaBundle:Categoria:index.html.twig', array(
             'entities' => $entities,
@@ -171,7 +171,7 @@ class CategoriaController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm($id)
     {

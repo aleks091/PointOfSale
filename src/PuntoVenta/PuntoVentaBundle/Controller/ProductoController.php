@@ -22,7 +22,7 @@ class ProductoController extends Controller
     {
         $em = $this->getDoctrine()->getManager();
 
-        $entities = $em->getRepository('PuntoVentaBundle:Producto')->findAll();
+        $entities = $em->getRepository('PuntoVentaBundle:Producto')->getAll();
 
         return $this->render('PuntoVentaBundle:Producto:index.html.twig', array(
             'entities' => $entities,
@@ -174,7 +174,7 @@ class ProductoController extends Controller
      *
      * @param mixed $id The entity id
      *
-     * @return Symfony\Component\Form\Form The form
+     * @return Form The form
      */
     private function createDeleteForm($id)
     {

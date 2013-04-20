@@ -36,15 +36,30 @@ class ProductoRepository extends EntityRepository
 	
 	}
 
-
-	
 	public function getFirstProductoOfFirstCategory(){
 
         $producto = $this->getProductosOfFirstCategory()
                             ->setMaxResults(1)
                             ->getQuery()
-                            ->getSingleResult();
+                            ->getOneOrNullResult();
 
         return ($producto == null) ? new Producto() : $producto;
 	}
+
+    public function getAll(){
+        //Get all productos ordered  by categoria and descripcion
+        $repository = $this->getEntityManager();
+
+        return $repository->createQueryBuilder()
+            ->select('p')
+            ->from('PuntoVentaBundle:Producto', 'p')
+            ->innerJoin('p.categoria', 'c')
+            ->addOrderBy('c.nombre', 'ASC')
+            ->addOrderBy('p.descripcion', 'ASC')
+            ->getQuery()
+            ->getResult();
+
+
+
+    }
 }
