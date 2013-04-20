@@ -75,7 +75,10 @@ class VentaController extends Controller
         $producto = $em->getRepository('PuntoVentaBundle:Producto')
             ->getFirstProductoOfFirstCategory();
         $iva = $em->getRepository('PuntoVentaBundle:IVA')->findLatest();
+        $tipoCambio = $em->getRepository('PuntoVentaBundle:TipoCambio')->findLatest();
 
+
+        $tipoCambioValue = $tipoCambio->getTipoCambio();
         $cantidadProducto = 1;
         $importe = $producto->getPrecioUnitario() * $cantidadProducto;
         $porcentajeIva =  1 + $iva->getIva() / 100;
@@ -92,7 +95,8 @@ class VentaController extends Controller
         $venta->setSubtotal($importe);
         $venta->setTotal($ventaTotal);
 
-        $optionsForVenta = array( 'attr' => array('cantidadIva' => $cantidadIva));
+        $optionsForVenta = array( 'attr' =>
+        array('cantidadIva' => $cantidadIva, 'tipoCambio' => $tipoCambioValue));
 
         $form = $this->createForm(new VentaType(), $venta, $optionsForVenta);
 

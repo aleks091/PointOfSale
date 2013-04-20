@@ -18,7 +18,7 @@
         </td>
             
         <td>
-            {{ dump(venta)}}
+            $ {{ venta.tc.vars.attr.value | number_format(2, '.') }} x 1
         </td>
         
         <td><input id="ventaDolar" type="checkbox" name="isVentaEnDolar">Venta Dolar</td>
